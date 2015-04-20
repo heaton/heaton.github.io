@@ -1,0 +1,232 @@
+body {
+  font-family: "Open Sans", monospace;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+header, footer, section, div {
+  margin: 0 auto;
+  text-align: center;
+}
+
+img {
+  border: 0;
+}
+
+img.logo {
+  width: 200px;
+  vertical-align: middle;
+}
+
+header nav {
+  display: inline-block;
+  border-left: 1px solid #DDD;
+  border-right: 1px solid #DDD;
+  padding: 0 10px;
+  margin: 0 20px;
+}
+
+header nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+header nav li {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 10px;
+  line-height: 60px;
+}
+
+h2 {
+  font-size: 36px;
+  margin: 0;
+}
+
+section {
+  padding: 20px 0;
+}
+
+.button {
+  border-color: black;
+  display: inline-block;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 11px 40px 12px;
+  font-size: 13px;
+}
+
+header .donate {
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 6px 30px 7px;
+}
+
+.slogan {
+  background-image: url("../images/s1.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 540px;
+  color: white;
+}
+
+.slogan h2 {
+  margin-top: 184px;
+  margin-bottom: 22px;
+}
+
+.slogan .button {
+  width: 150px;
+  margin: 0 24px;
+  font-size: 16px;
+  color: white;
+}
+
+.slogan .tutor {
+  background: rgba(220,220,220,0.5);
+  border: 0;
+  padding: 12px 41px 13px;
+}
+
+.mission {
+  height: 420px;
+  color: #636471;
+}
+
+.mission h2 {
+  color: #4D4E59;
+  margin-top: 91px;
+  margin-bottom: 20px;
+}
+
+.mission p {
+  font-size: 20px;
+  margin: 8px 0;
+}
+
+.mission .button {
+  background: #FFCD62;
+  width: 120px;
+  margin-top: 21px;
+}
+
+.intro {
+  height: 480px;
+  color: white;
+}
+
+.intro .icon{
+  display: inline-block;
+  width: 274px;
+  height: 430px;
+  margin: 0 41px; 
+  vertical-align: middle;
+}
+
+.intro .icon img {
+  width: 274px;
+}
+
+.intro .content {
+  display: inline-block;
+  width: 422px;
+  height: 460px;
+  margin: 0 41px; 
+  text-align: left;
+}
+
+.intro .content h2 {
+  margin-top: 100px;
+}
+
+.intro .content p {
+  line-height: 25px
+}
+
+.intro .content .button {
+  width: 120px;
+  text-align: center;
+  border: 0;
+  color: white;
+  margin-top: 10px;
+}
+
+.students {
+  background: #91D0B1;
+}
+
+.students .button {
+  background: #7CB69A;
+}
+
+.tutors {
+  background: #FFCD62;
+}
+.tutors .button {
+  background: #EABC5B;
+}
+
+.partners {
+  background: #80A8CC;
+}
+.partners .button {
+  background: #6D91B1;
+}
+
+.progress h2 {
+  color: #4D4E59;
+  margin-top: 120px;
+}
+
+.progress ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 36px;
+}
+
+.progress li {
+  display: inline-block;
+  width: 260px;
+  height: 176px;
+  border-radius: 4px;
+  border: 1px solid #E1DFDA;
+  padding: 30px 0;
+  margin: 20px 30px 120px;
+}
+
+.progress li .number {
+  transform: scale(1,2.5);
+  font-size: 40px;
+  line-height: 105px;
+}
+
+.progress li .title {
+  line-height: 22px;
+  display: block;
+  margin-top: 28px;
+  font-size: 13px;
+}
+
+.progress li:nth-child(1) {
+  color: #91D0B1;
+}
+.progress li:nth-child(2){
+  color: #FFCD62;
+}
+.progress li:nth-child(3){
+  color: #80A8CC;
+}
+
+footer {
+  background: #4D4E59;
+  line-height: 60px;
+  color: white;
+  font-size: 12px;
+}
