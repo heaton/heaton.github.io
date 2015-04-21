@@ -120,6 +120,8 @@ header .donate {
   background: #FFCD62;
   width: 120px;
   margin-top: 21px;
+  border: 0;
+  color: #636471;
 }
 
 .intro {
