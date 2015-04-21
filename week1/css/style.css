@@ -25,8 +25,8 @@ img.logo {
 
 header nav {
   display: inline-block;
-  border-left: 1px solid #DDD;
-  border-right: 1px solid #DDD;
+  border-left: 1px solid #EAE7E2;
+  border-right: 1px solid #EAE7E2;
   padding: 0 10px;
   margin: 0 20px;
 }
@@ -42,7 +42,9 @@ header nav li {
   cursor: pointer;
   display: inline-block;
   margin: 0 10px;
-  line-height: 60px;
+  line-height: 64px;
+  color: #71717D;
+  font-size: 14px;
 }
 
 h2 {
@@ -57,7 +59,7 @@ section {
 .button {
   border-color: black;
   display: inline-block;
-  border: 1px solid lightgrey;
+  border: 1px solid #B8B6B1;
   border-radius: 5px;
   padding: 11px 40px 12px;
   font-size: 13px;
@@ -73,12 +75,15 @@ header .donate {
   background-image: url("../images/s1.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
-  height: 540px;
+  background-attachment: fixed;
+  height: 600px;
+  height: 100vh;
   color: white;
 }
 
 .slogan h2 {
   margin-top: 184px;
+  margin-top: 36vh;
   margin-bottom: 22px;
 }
 
