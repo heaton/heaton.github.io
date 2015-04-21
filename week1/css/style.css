@@ -139,6 +139,7 @@ header .donate {
 
 .intro .icon img {
   width: 274px;
+  border-radius: 50%;
 }
 
 .intro .content {
