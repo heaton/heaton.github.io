@@ -1,3 +1,5 @@
+@images: "../images";
+
 body {
   font-family: "Open Sans", monospace;
   margin: 0;
@@ -73,24 +75,27 @@ section {
 }
 
 .slogan {
-  background-image: url("../images/s1.jpg");
+  background-image: url("@{images}/s1.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 600px;
   height: 100vh;
   color: white;
+
   h2 {
     margin-top: 184px;
     margin-top: 36vh;
     margin-bottom: 22px;
   }
+
   .button {
     width: 150px;
     margin: 0 24px;
     font-size: 16px;
     color: white;
   }
+
   .tutor {
     background: rgba(220,220,220,0.5);
     border: 0;
@@ -101,16 +106,19 @@ section {
 .mission {
   height: 420px;
   color: #636471;
+
   h2 {
     color: #4D4E59;
     margin-top: 91px;
     margin-bottom: 20px;
   }
+
   p {
     font-size: 20px;
     margin: 8px auto;
     width: 700px;
   }
+
   .button {
     background: #FFCD62;
     width: 120px;
@@ -123,28 +131,34 @@ section {
 .intro {
   height: 480px;
   color: white;
+
   .icon{
     display: inline-block;
     height: 430px;
     margin: 0 41px; 
     vertical-align: middle;
+
     img {
       width: 274px;
       border-radius: 50%;
     }
   }
+
   .content {
     display: inline-block;
     width: 422px;
     height: 460px;
     margin: 0 41px; 
     text-align: left;
+
     h2 {
       margin-top: 100px;
     }
+
     p {
       line-height: 25px
     }
+
     .button {
       width: 120px;
       text-align: center;
@@ -181,10 +195,12 @@ section {
     color: #4D4E59;
     margin-top: 120px;
   }
+
   ul {
     list-style-type: none;
     padding: 0;
     margin-top: 36px;
+
     li {
       display: inline-block;
       width: 260px;
@@ -193,11 +209,13 @@ section {
       border: 1px solid #E1DFDA;
       padding: 30px 0;
       margin: 20px 30px 120px;
+
       .number {
         transform: scale(1,2.5);
         font-size: 40px;
         line-height: 105px;
       }
+
       .title {
         line-height: 22px;
         display: block;
@@ -205,6 +223,7 @@ section {
         font-size: 13px;
       }
     }
+
     li:nth-child(1) {
       color: #91D0B1;
     }
@@ -216,7 +235,6 @@ section {
     }
   }
 }
-
 
 footer {
   background: #4D4E59;
