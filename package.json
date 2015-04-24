@@ -1,0 +1,19 @@
+{
+  "name": "heaton",
+  "version": "1.0.0",
+  "description": "Heaton's website",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-less": "^3.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heaton/heaton.github.io"
+  },
+  "author": "Heaton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/heaton/heaton.github.io/issues"
+  },
+  "homepage": "https://heaton.github.io"
+}
