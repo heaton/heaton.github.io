@@ -3,6 +3,9 @@ $(function() {
     $('.active').removeClass('active');
     $('.movies .' + $(this).attr("data-video")).addClass('active');
     $(this).addClass('active');
+    $('.movies article').removeClass('at-left at-right');
+    $('.movies .active').prevAll().addClass('at-left');
+    $('.movies .active').nextAll().addClass('at-right');
   });
 
   $(document).keydown(function(e) {

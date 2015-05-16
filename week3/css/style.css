@@ -39,15 +39,11 @@ header .universe {
   background-attachment: fixed;
   background-position-x: center;
   color: #EEE;
-  height: 600px;
   height: 100vh;
-  width: 0;
-  float: left;
-  transition: width 1s;
-}
-.movies article h2,
-.movies article div {
-  display: none;
+  width: 100%;
+  position: absolute;
+  transition: transform 1s;
+  z-index: -2;
 }
 .movies article h2 {
   font-size: 58px;
@@ -58,12 +54,16 @@ header .universe {
   margin-left: 11%;
   clear: both;
 }
-.movies article.active {
-  width: 100%;
+.movies article,
+.movies article.at-left {
+  transform: translate(-100%);
 }
-.movies article.active h2,
-.movies article.active div {
-  display: block;
+.movies article.at-right {
+  transform: translate(100%);
+}
+.movies article.active {
+  transform: none;
+  z-index: -1;
 }
 .movies article.iron-man {
   background-image: url("../images/iron-man.jpg");
