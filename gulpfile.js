@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var less = require('gulp-less');
 
-var workdir = 'week1/'
+var workdir = 'week3/'
 var paths = {
   less: workdir + 'less/**/*.less',
   css: workdir + 'css'

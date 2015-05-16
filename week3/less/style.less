@@ -1,0 +1,193 @@
+@images: "../images";
+
+body {
+  font-family: "Open Sans";
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+header, footer, section, div, h2 {
+  margin: 0 auto;
+}
+
+img {
+  border: 0;
+}
+
+header {
+  .logo {
+    position: absolute;
+
+    img {
+      width: 300px;
+      margin: 20px;
+    }
+  }
+  .universe {
+    position: absolute;
+    right: 20px;
+    padding: 20px;
+    color: #FFF;
+    opacity: 0.9;
+    font-size: 28px;
+  }
+}
+
+.movies {
+  article {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-x: center;
+    width: 0;
+    color: #EEE;
+    height: 600px;
+    height: 100vh;
+    width: 0;
+    float: left;
+    transition: width 1s;
+
+    h2, div {
+      display: none;
+    }
+
+    h2 {
+      font-size: 58px;
+      float: left;
+      max-width: 380px;
+      text-align: left;
+      margin-top: 35vh;
+      margin-left: 11%;
+      clear: both;
+    }
+
+    &.active {
+      width: 100%;
+
+      h2, div {
+        display: block;
+      }
+    }
+
+    &.iron-man {
+      background-image: url("@{images}/iron-man.jpg");
+    }
+
+    &.hulk {
+      background-image: url("@{images}/hulk.jpg");
+
+      h2 {
+        margin-top: 30vh;
+      }
+    }
+
+    &.iron-man-2 {
+      background-image: url("@{images}/iron-man-2.jpg");
+    }
+
+    &.thor {
+      background-image: url("@{images}/thor.jpg");
+    }
+
+    &.captain {
+      background-image: url("@{images}/captain.jpg");
+
+      h2 {
+        font-size: 49px;
+        max-width: 400px;
+        margin-left: 9%;
+      }
+    }
+
+    &.avengers {
+      background-image: url("@{images}/avengers.jpg");
+    }
+
+    &.iron-man-3 {
+      background-image: url("@{images}/iron-man-3.jpg");
+    }
+
+    &.thor-2 {
+      background-image: url("@{images}/thor-2.jpg");
+    }
+
+    &.captain-2 {
+      background-image: url("@{images}/captain-2.jpg");
+
+      h2 {
+        font-size: 49px;
+        max-width: 430px;
+        margin-left: 9%;
+      }
+    }
+
+    &.avengers-2 {
+      background-image: url("@{images}/avengers-2.jpg");
+    }
+
+    .intro {
+      float: right;
+      width: 40%;
+      font-size: 18px;
+      line-height: 30px;
+      text-align: justify;
+      margin-right: 4vw;
+      margin-top: 30vh;
+      background-color: rgba(120,120,120,0.2);
+      padding: 6px 12px;
+      border-radius: 10px;
+      text-indent: 1.5em;
+    }
+
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      float: left;
+      width: 10%;
+      line-height: 56px;
+      cursor: pointer;
+      color: #EEE;
+      position: relative;
+
+      &:after {
+        content: "";
+        opacity: 0.3;
+        box-sizing: border-box;
+        background-color: #555;
+        border: solid 1px #999;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      &.active:after {
+        opacity: 0.5;
+      }
+
+      &:hover:after {
+        opacity: 0.6;
+      }
+
+    }
+  }
+}
