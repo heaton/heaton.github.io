@@ -2,7 +2,7 @@ $(function() {
   $('.chronology-nav ul li').click(function() {
     $('.active').removeClass('active');
     $('.movies .' + $(this).attr("data-video")).addClass('active');
-    $(this).addClass('active').parent().removeClass('show');
+    $(this).addClass('active').parent().children().removeClass('show');
     $('.movies article').removeClass('at-left at-right');
     $('.movies .active').prevAll().addClass('at-left');
     $('.movies .active').nextAll().addClass('at-right');
@@ -21,7 +21,7 @@ $(function() {
   });
 
   $('.chronology-nav .menu').click(function() {
-    $('.chronology-nav ul').toggleClass('show');
+    $('.chronology-nav ul li').toggleClass('show');
   });
 
   var oriX;

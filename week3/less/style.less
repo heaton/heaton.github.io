@@ -246,6 +246,7 @@ footer {
 
         .mobile({
           width: 90px;
+          right: -90px;
           line-height: 50px;
           color: #FFF;
           margin-top: 3px;
@@ -278,20 +279,19 @@ footer {
         &:hover:after {
           opacity: 0.6;
         }
+
+        &.show {
+          right: 2px;
+        }
+
       }
 
       .mobile({
         width: 90px;
         position: fixed;
-        right: -90px;
+        right: 0px;
         bottom: 75px;
-        -webkit-transition: right 0.1s ease-out;
-        transition: right 0.1s ease-out;
       });
-
-      &.show {
-        right: 2px;
-      }
 
     }
 
@@ -313,4 +313,19 @@ footer {
       });
     }
   }
+}
+
+.generate-transition(10);
+
+.generate-transition(@n, @i: 1) when (@i <= @n) {
+  .chronology-nav ul li.show:nth-child(@{i}) {
+    -webkit-transition: right 90ms ease-in-out ((@n - @i) * 40ms);
+    transition: right 90ms ease-in-out ((@n - @i) * 40ms);
+  }
+
+  .chronology-nav ul li:nth-child(@{i}) {
+    -webkit-transition: right 90ms ease-in-out (@i * 40ms);
+    transition: right 90ms ease-in-out (@i * 40ms);
+  }
+  .generate-transition(@n, @i + 1);
 }

@@ -222,6 +222,7 @@ footer .chronology-nav ul li {
 @media screen and (max-width: 1000px) {
   footer .chronology-nav ul li {
     width: 90px;
+    right: -90px;
     line-height: 50px;
     color: #FFF;
     margin-top: 3px;
@@ -253,18 +254,16 @@ footer .chronology-nav ul li.active:after {
 footer .chronology-nav ul li:hover:after {
   opacity: 0.6;
 }
+footer .chronology-nav ul li.show {
+  right: 2px;
+}
 @media screen and (max-width: 1000px) {
   footer .chronology-nav ul {
     width: 90px;
     position: fixed;
-    right: -90px;
+    right: 0px;
     bottom: 75px;
-    -webkit-transition: right 0.1s ease-out;
-    transition: right 0.1s ease-out;
   }
-}
-footer .chronology-nav ul.show {
-  right: 2px;
 }
 footer .chronology-nav .menu {
   display: none;
@@ -283,4 +282,84 @@ footer .chronology-nav .menu {
     cursor: pointer;
     background-color: rgba(88, 88, 88, 0.6);
   }
+}
+.chronology-nav ul li.show:nth-child(1) {
+  -webkit-transition: right 90ms ease-in-out 360ms;
+  transition: right 90ms ease-in-out 360ms;
+}
+.chronology-nav ul li:nth-child(1) {
+  -webkit-transition: right 90ms ease-in-out 40ms;
+  transition: right 90ms ease-in-out 40ms;
+}
+.chronology-nav ul li.show:nth-child(2) {
+  -webkit-transition: right 90ms ease-in-out 320ms;
+  transition: right 90ms ease-in-out 320ms;
+}
+.chronology-nav ul li:nth-child(2) {
+  -webkit-transition: right 90ms ease-in-out 80ms;
+  transition: right 90ms ease-in-out 80ms;
+}
+.chronology-nav ul li.show:nth-child(3) {
+  -webkit-transition: right 90ms ease-in-out 280ms;
+  transition: right 90ms ease-in-out 280ms;
+}
+.chronology-nav ul li:nth-child(3) {
+  -webkit-transition: right 90ms ease-in-out 120ms;
+  transition: right 90ms ease-in-out 120ms;
+}
+.chronology-nav ul li.show:nth-child(4) {
+  -webkit-transition: right 90ms ease-in-out 240ms;
+  transition: right 90ms ease-in-out 240ms;
+}
+.chronology-nav ul li:nth-child(4) {
+  -webkit-transition: right 90ms ease-in-out 160ms;
+  transition: right 90ms ease-in-out 160ms;
+}
+.chronology-nav ul li.show:nth-child(5) {
+  -webkit-transition: right 90ms ease-in-out 200ms;
+  transition: right 90ms ease-in-out 200ms;
+}
+.chronology-nav ul li:nth-child(5) {
+  -webkit-transition: right 90ms ease-in-out 200ms;
+  transition: right 90ms ease-in-out 200ms;
+}
+.chronology-nav ul li.show:nth-child(6) {
+  -webkit-transition: right 90ms ease-in-out 160ms;
+  transition: right 90ms ease-in-out 160ms;
+}
+.chronology-nav ul li:nth-child(6) {
+  -webkit-transition: right 90ms ease-in-out 240ms;
+  transition: right 90ms ease-in-out 240ms;
+}
+.chronology-nav ul li.show:nth-child(7) {
+  -webkit-transition: right 90ms ease-in-out 120ms;
+  transition: right 90ms ease-in-out 120ms;
+}
+.chronology-nav ul li:nth-child(7) {
+  -webkit-transition: right 90ms ease-in-out 280ms;
+  transition: right 90ms ease-in-out 280ms;
+}
+.chronology-nav ul li.show:nth-child(8) {
+  -webkit-transition: right 90ms ease-in-out 80ms;
+  transition: right 90ms ease-in-out 80ms;
+}
+.chronology-nav ul li:nth-child(8) {
+  -webkit-transition: right 90ms ease-in-out 320ms;
+  transition: right 90ms ease-in-out 320ms;
+}
+.chronology-nav ul li.show:nth-child(9) {
+  -webkit-transition: right 90ms ease-in-out 40ms;
+  transition: right 90ms ease-in-out 40ms;
+}
+.chronology-nav ul li:nth-child(9) {
+  -webkit-transition: right 90ms ease-in-out 360ms;
+  transition: right 90ms ease-in-out 360ms;
+}
+.chronology-nav ul li.show:nth-child(10) {
+  -webkit-transition: right 90ms ease-in-out 0ms;
+  transition: right 90ms ease-in-out 0ms;
+}
+.chronology-nav ul li:nth-child(10) {
+  -webkit-transition: right 90ms ease-in-out 400ms;
+  transition: right 90ms ease-in-out 400ms;
 }
