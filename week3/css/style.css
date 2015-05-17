@@ -42,7 +42,8 @@ header .universe {
   height: 100vh;
   width: 100%;
   position: absolute;
-  transition: transform 1s;
+  -webkit-transition: -webkit-transform 0.9s ease-out;
+  transition: transform 0.9s ease-out;
   z-index: -2;
 }
 .movies article h2 {
@@ -56,12 +57,15 @@ header .universe {
 }
 .movies article,
 .movies article.at-left {
+  -webkit-transform: translate(-100%);
   transform: translate(-100%);
 }
 .movies article.at-right {
+  -webkit-transform: translate(100%);
   transform: translate(100%);
 }
 .movies article.active {
+  -webkit-transform: none;
   transform: none;
   z-index: -1;
 }
