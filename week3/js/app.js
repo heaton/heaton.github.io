@@ -26,7 +26,6 @@ $(function() {
     return oe.touches[0] || oe.changedTouches[0];
   };
   var endEvent = function(e) {
-    $('.movies article').css('transition', '').css('transform', '');
     var moveDistance = touch(e).screenX - oriX;
     if(moveDistance > 30) {
       slide('left');
@@ -36,11 +35,5 @@ $(function() {
   };
   $('.movies article').on('touchstart', function(e) {
     oriX = touch(e).screenX;
-    $('.movies article').css('transition', 'none');
-  }).on('touchmove', function(e) {
-    var moveDistance = touch(e).screenX - oriX;
-    $(this).css('transform', 'translate(' + moveDistance + 'px)');
-    $(this).prev().css('transform', 'translate(' + (-$(window).width() + moveDistance) + 'px)');
-    $(this).next().css('transform', 'translate(' + ($(window).width() + moveDistance) + 'px)');
   }).on('touchend', endEvent).on('touchcancel', endEvent);
 });
