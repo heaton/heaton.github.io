@@ -2,7 +2,7 @@ $(function() {
   $('.chronology-nav ul li').click(function() {
     $('.active').removeClass('active');
     $('.movies .' + $(this).attr("data-video")).addClass('active');
-    $(this).addClass('active');
+    $(this).addClass('active').parent().removeClass('show');
     $('.movies article').removeClass('at-left at-right');
     $('.movies .active').prevAll().addClass('at-left');
     $('.movies .active').nextAll().addClass('at-right');
@@ -18,6 +18,10 @@ $(function() {
       case 37: e.preventDefault(); slide('left'); break;
       case 39: e.preventDefault(); slide('right'); break;
     };
+  });
+
+  $('.chronology-nav .menu').click(function() {
+    $('.chronology-nav ul').toggleClass('show');
   });
 
   var oriX;
