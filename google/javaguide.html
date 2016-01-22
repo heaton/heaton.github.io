@@ -1,0 +1,1026 @@
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <link rel="stylesheet" type="text/css" href="statics/javaguide.css">
+  <link rel="stylesheet" type="text/css" href="statics/prettify.css">
+  <script src="statics/run_prettify.js" type="text/javascript"></script>
+  <link href="http://www.google.com/favicon.ico" type="image/x-icon" rel="shortcut icon">
+  <title>Google Java Style</title>
+<body style="position: static;">
+  <h1>Google Java Style</h1>
+  <div class="change">Last changed: February 03, 2014</div>
+<table border="0">
+<tbody><tr>
+<td>
+<dl>
+<br>
+<dt class="toc1">
+<a href="#s1-introduction">1 Introduction</a>
+</dt>
+<dd>
+<a href="#s1.1-terminology">1.1 Terminology notes</a>
+</dd>
+<dd>
+<a href="#s1.2-guide-notes">1.2 Guide notes</a>
+</dd>
+<br>
+<dt class="toc1">
+<a href="#s2-source-file-basics">2 Source file basics</a>
+</dt>
+<dd>
+<a href="#s2.1-file-name">2.1 File name</a>
+</dd>
+<dd>
+<a href="#s2.2-file-encoding">2.2 File encoding: UTF-8</a>
+</dd>
+<dd>
+<a href="#s2.3-special-characters">2.3 Special characters</a>
+</dd>
+<dd class="toc3">
+<a href="#s2.3.1-whitespace-characters">2.3.1 Whitespace characters</a>
+</dd>
+<dd class="toc3">
+<a href="#s2.3.2-special-escape-sequences">2.3.2 Special escape sequences</a>
+</dd>
+<dd class="toc3">
+<a href="#s2.3.3-non-ascii-characters">2.3.3 Non-ASCII characters</a>
+</dd>
+<br>
+<dt class="toc1">
+<a href="#s3-source-file-structure">3 Source file structure</a>
+</dt>
+<dd>
+<a href="#s3.1-copyright-statement">3.1 License or copyright information, if present</a>
+</dd>
+<dd>
+<a href="#s3.2-package-statement">3.2 Package statement</a>
+</dd>
+<dd>
+<a href="#s3.3-import-statements">3.3 Import statements</a>
+</dd>
+<dd class="toc3">
+<a href="#s3.3.1-wildcard-imports">3.3.1 No wildcard imports</a>
+</dd>
+<dd class="toc3">
+<a href="#s3.3.2-import-line-wrapping">3.3.2 No line-wrapping</a>
+</dd>
+<dd class="toc3">
+<a href="#s3.3.3-import-ordering-and-spacing">3.3.3 Ordering and spacing</a>
+</dd>
+<dd>
+<a href="#s3.4-class-declaration">3.4 Class declaration</a>
+</dd>
+<dd class="toc3">
+<a href="#s3.4.1-one-top-level-class">3.4.1 Exactly one top-level class declaration</a>
+</dd>
+<dd class="toc3">
+<a href="#s3.4.2-class-member-ordering">3.4.2 Class member ordering</a>
+</dd>
+</dl>
+</td><td>
+<dl>
+<br>
+<dt class="toc1">
+<a href="#s4-formatting">4 Formatting</a>
+</dt>
+<dd>
+<a href="#s4.1-braces">4.1 Braces</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.1.1-braces-always-used">4.1.1 Braces are used where optional</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.1.2-blocks-k-r-style">4.1.2 Nonempty blocks: K &amp; R style</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.1.3-braces-empty-blocks">4.1.3 Empty blocks: may be concise</a>
+</dd>
+<dd>
+<a href="#s4.2-block-indentation">4.2 Block indentation: +2 spaces</a>
+</dd>
+<dd>
+<a href="#s4.3-one-statement-per-line">4.3 One statement per line</a>
+</dd>
+<dd>
+<a href="#s4.4-column-limit">4.4 Column limit: 80 or 100</a>
+</dd>
+<dd>
+<a href="#s4.5-line-wrapping">4.5 Line-wrapping</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.5.1-line-wrapping-where-to-break">4.5.1 Where to break</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.5.2-line-wrapping-indent">4.5.2 Indent continuation lines at least +4 spaces</a>
+</dd>
+<dd>
+<a href="#s4.6-whitespace">4.6 Whitespace</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.6.1-vertical-whitespace">4.6.1 Vertical Whitespace</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.6.2-horizontal-whitespace">4.6.2 Horizontal whitespace</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.6.3-horizontal-alignment">4.6.3 Horizontal alignment: never required</a>
+</dd>
+<dd>
+<a href="#s4.7-grouping-parentheses">4.7 Grouping parentheses: recommended</a>
+</dd>
+<dd>
+<a href="#s4.8-specific-constructs">4.8 Specific constructs</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.8.1-enum-classes">4.8.1 Enum classes</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.8.2-variable-declarations">4.8.2 Variable declarations</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.8.3-arrays">4.8.3 Arrays</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.8.4-switch">4.8.4 Switch statements</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.8.5-annotations">4.8.5 Annotations</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.8.6-comments">4.8.6 Comments</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.8.7-modifiers">4.8.7 Modifiers</a>
+</dd>
+<dd class="toc3">
+<a href="#s4.8.8-numeric-literals">4.8.8 Numeric Literals</a>
+</dd>
+</dl>
+</td><td>
+<dl>
+<br>
+<dt class="toc1">
+<a href="#s5-naming">5 Naming</a>
+</dt>
+<dd>
+<a href="#s5.1-identifier-names">5.1 Rules common to all identifiers</a>
+</dd>
+<dd>
+<a href="#s5.2-specific-identifier-names">5.2 Rules by identifier type</a>
+</dd>
+<dd class="toc3">
+<a href="#s5.2.1-package-names">5.2.1 Package names</a>
+</dd>
+<dd class="toc3">
+<a href="#s5.2.2-class-names">5.2.2 Class names</a>
+</dd>
+<dd class="toc3">
+<a href="#s5.2.3-method-names">5.2.3 Method names</a>
+</dd>
+<dd class="toc3">
+<a href="#s5.2.4-constant-names">5.2.4 Constant names</a>
+</dd>
+<dd class="toc3">
+<a href="#s5.2.5-non-constant-field-names">5.2.5 Non-constant field names</a>
+</dd>
+<dd class="toc3">
+<a href="#s5.2.6-parameter-names">5.2.6 Parameter names</a>
+</dd>
+<dd class="toc3">
+<a href="#s5.2.7-local-variable-names">5.2.7 Local variable names</a>
+</dd>
+<dd class="toc3">
+<a href="#s5.2.8-type-variable-names">5.2.8 Type variable names</a>
+</dd>
+<dd>
+<a href="#s5.3-camel-case">5.3 Camel case: defined</a>
+</dd>
+<br>
+<dt class="toc1">
+<a href="#s6-programming-practices">6 Programming Practices</a>
+</dt>
+<dd>
+<a href="#s6.1-override-annotation">6.1 @Override: always used</a>
+</dd>
+<dd>
+<a href="#s6.2-caught-exceptions">6.2 Caught exceptions: not ignored</a>
+</dd>
+<dd>
+<a href="#s6.3-static-members">6.3 Static members: qualified using class</a>
+</dd>
+<dd>
+<a href="#s6.4-finalizers">6.4 Finalizers: not used</a>
+</dd>
+<br>
+<dt class="toc1">
+<a href="#s7-javadoc">7 Javadoc</a>
+</dt>
+<dd>
+<a href="#s7.1-javadoc-formatting">7.1 Formatting</a>
+</dd>
+<dd class="toc3">
+<a href="#s7.1.1-javadoc-multi-line">7.1.1 General form</a>
+</dd>
+<dd class="toc3">
+<a href="#s7.1.2-javadoc-paragraphs">7.1.2 Paragraphs</a>
+</dd>
+<dd class="toc3">
+<a href="#s7.1.3-javadoc-at-clauses">7.1.3 At-clauses</a>
+</dd>
+<dd>
+<a href="#s7.2-summary-fragment">7.2 The summary fragment</a>
+</dd>
+<dd>
+<a href="#s7.3-javadoc-where-required">7.3 Where Javadoc is used</a>
+</dd>
+<dd class="toc3">
+<a href="#s7.3.1-javadoc-exception-self-explanatory">7.3.1 Exception: self-explanatory methods</a>
+</dd>
+<dd class="toc3">
+<a href="#s7.3.2-javadoc-exception-overrides">7.3.2 Exception: overrides</a>
+</dd>
+<dd class="toc3">
+<a href="#s7.3.3-javadoc-optional">7.3.3 Optional javadoc</a>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody></table>
+<div><div id="with-header-links"><a name="s1-introduction">
+    </a><h2><a name="s1-introduction">1 Introduction 介绍&nbsp;</a><a href="#s1-introduction"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h2>
+    
+<p>This document serves as the <strong>complete</strong> definition of Google's coding standards for
+source code in the Java™ Programming Language. A Java source file is described as being <em>in
+Google Style</em> if and only if it adheres to the rules herein.</p><p>这篇文档提供Java源代码<strong>完整的</strong>Google标准定义。完全遵守这些规则的Java源代码文件被称为<em>Google风格</em>。</p>
+<p>Like other programming style guides, the issues covered span not only aesthetic issues of
+formatting, but other types of conventions or coding standards as well. However, this document
+focuses primarily on the <strong>hard-and-fast rules</strong> that we follow universally, and
+avoids giving <em>advice</em> that isn't clearly enforceable (whether by human or tool).
+</p><p>和其他编程风格手册一样，本文覆盖的范围不仅涉及代码格式的美观，还涉及其他如约定和代码标准等。然后，这篇文档首要关注我们通常遵循的<strong>准确快速(hard-and-fast)规则</strong>， 避免给出模糊不清的<em>建议</em>(无论人或工具).
+</p><a name="s1.1-terminology">
+    </a><h3><a name="s1.1-terminology">1.1 Terminology notes 术语说明&nbsp;</a><a href="#s1.1-terminology"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>In this document, unless otherwise clarified 除非特别申明，否则仅适用此文档 :</p><ol><li>The term <em>class</em> is used inclusively to mean an "ordinary" class, enum class,
+  interface or annotation type (<code class="prettyprint lang-java">@interface</code>).
+  <br>
+  术语<em>class</em>被用来表示包括"原始的"类(class)，枚举类(enum class)，接口(interface)或者注解类型(annotation)(<code class="prettyprint lang-java">@interface</code>)
+</li><li>The term <em>comment</em> always refers to <em>implementation</em> comments. We do not
+  use the phrase "documentation comments", instead using the common term "Javadoc."
+  <br>
+  术语<em>注释(comment)</em>总是指<em>代码</em>注释。我们用普通术语"Java文档(Javadoc)"代替术语"文档注释(documentation comments)"。
+</li></ol>
+<p>Other "terminology notes" will appear occasionally throughout the document.</p><p>其他"术语说明"会偶尔出现在整个文档中。</p><a name="s1.2-guide-notes">
+    </a><h3><a name="s1.2-guide-notes">1.2 Guide notes 手册说明&nbsp;</a><a href="#s1.2-guide-notes"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    
+<p>Example code in this document is <strong>non-normative</strong>. That is, while the examples
+are in Google Style, they may not illustrate the <em>only</em> stylish way to represent the
+code. Optional formatting choices made in examples should not be enforced as rules.</p><p>本文档的示例代码是<strong>非权威的</strong>。就是说，虽然这些例子是Google风格的，但它们不是呈现代码的<em>唯一</em>风格。示例中选择的代码格式不应该被强制执行。</p><a name="s2-source-file-basics">
+    </a><h2><a name="s2-source-file-basics">2 Source file basics 源代码文件&nbsp;</a><a href="#s2-source-file-basics"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h2>
+    <a name="s2.1-file-name">
+    </a><h3><a name="s2.1-file-name">2.1 File name 文件名称&nbsp;</a><a href="#s2.1-file-name"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>The source file name consists of the case-sensitive name of the top-level class it contains,
+plus the <code>.java</code> extension.</p>
+<p>文件名由内容中最高级别的区分大小写的类名加上<code>.java</code>后缀构成</p><a name="s2.2-file-encoding">
+    </a><h3><a name="s2.2-file-encoding">2.2 File encoding 文件编码: UTF-8&nbsp;</a><a href="#s2.2-file-encoding"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>Source files are encoded in <strong>UTF-8</strong>.</p>
+<p>源代码文件被编码为<strong>UTF-8</strong>.</p><a name="s2.3-special-characters">
+    </a><h3><a name="s2.3-special-characters">2.3 Special characters 特殊字符&nbsp;</a><a href="#s2.3-special-characters"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <a name="s2.3.1-whitespace-characters">
+    </a><h4><a name="s2.3.1-whitespace-characters">2.3.1 Whitespace characters 空白字符&nbsp;</a><a href="#s2.3.1-whitespace-characters"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Aside from the line terminator sequence, the <strong>ASCII horizontal space
+character</strong> (<strong>0x20</strong>) is the only whitespace character that appears
+anywhere in a source file. This implies that:</p>
+<p>除了换行符，<strong>ASCII空格字符</strong> (<strong>0x20</strong>)是唯一出现在源代码文件中的空白字符。这意味着：</p><ol><li>All other whitespace characters in string and character literals are escaped.<br>
+所有其他空白字符或空白文字应被转义。</li><li>Tab characters are <strong>not</strong> used for indentation.<br>
+  <strong>不</strong>用Tab字符缩进。</li></ol><a name="s2.3.2-special-escape-sequences">
+    </a><h4><a name="s2.3.2-special-escape-sequences">2.3.2 Special escape sequences 特殊转义字符&nbsp;</a><a href="#s2.3.2-special-escape-sequences"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    
+<p>For any character that has a special escape sequence
+(<code class="prettyprint lang-java">\b</code>,
+<code class="prettyprint lang-java">\t</code>,
+<code class="prettyprint lang-java">\n</code>,
+<code class="prettyprint lang-java">\f</code>,
+<code class="prettyprint lang-java">\r</code>,
+<code class="prettyprint lang-java">\"</code>,
+<code class="prettyprint lang-java">\'</code> and
+<code class="prettyprint lang-java">\\</code>), that sequence
+is used rather than the corresponding octal
+(e.g.&nbsp;<code class="prettyprint lang-java badcode">\012</code>) or Unicode
+(e.g.&nbsp;<code class="prettyprint lang-java badcode">\u000a</code>) escape.</p><p>任何特殊转义字符
+(<code class="prettyprint lang-java">\b</code>,
+<code class="prettyprint lang-java">\t</code>,
+<code class="prettyprint lang-java">\n</code>,
+<code class="prettyprint lang-java">\f</code>,
+<code class="prettyprint lang-java">\r</code>,
+<code class="prettyprint lang-java">\"</code>,
+<code class="prettyprint lang-java">\'</code> 和
+<code class="prettyprint lang-java">\\</code>), 使用转义字符要好于八进制通配符
+(e.g.&nbsp;<code class="prettyprint lang-java badcode">\012</code>)或Unicode
+(e.g.&nbsp;<code class="prettyprint lang-java badcode">\u000a</code>)转义符。</p><a name="s2.3.3-non-ascii-characters">
+    </a><h4><a name="s2.3.3-non-ascii-characters">2.3.3 Non-ASCII characters 非ASCII字符&nbsp;</a><a href="#s2.3.3-non-ascii-characters"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>For the remaining non-ASCII characters, either the actual Unicode character
+(e.g.&nbsp;<code class="prettyprint lang-java">∞</code>) or the equivalent Unicode escape
+(e.g.&nbsp;<code class="prettyprint lang-java">\u221e</code>) is used, depending only on which
+makes the code <strong>easier to read and understand</strong>.</p>
+<p>剩下的非ASCII字符，无论是实际的Unicode字符
+(e.g.&nbsp;<code class="prettyprint lang-java">∞</code>)还是等价的Unicode转义字符
+(e.g.&nbsp;<code class="prettyprint lang-java">\u221e</code>)都可以被使用，主要取决于哪种方式可以使代码<strong>更容易读和理解</strong>.</p><p class="tip"><b>Tip:</b>&nbsp;in the Unicode escape case, and occasionally even when actual Unicode characters
+  are used, an explanatory comment can be very helpful.<br>
+<b>提示：</b> 在使用Unicode转义字符的情况下，有时甚至使用真是的Unicode字符时，一条解释性的注释将会非常有用。
+</p><p>Examples 例子:</p><table><tbody><tr><th>Example 示例</th><th>Discussion 评论</th></tr><tr><td><code class="prettyprint lang-java">String unitAbbrev = "μs";</code></td><td>Best: perfectly clear even without a comment. 最好：完美清晰，甚至不需要注释。</td></tr><tr><td><code class="prettyprint lang-java">String unitAbbrev = "\u03bcs"; // "μs"</code></td><td>Allowed, but there's no reason to do this. 还行：但是没有理由这样做。</td></tr><tr><td><code class="prettyprint lang-java">String unitAbbrev = "\u03bcs";
+      // Greek letter 希腊字符 mu, "s"</code></td><td>Allowed, but awkward and prone to mistakes. 还行：但是奇怪和容易被误解。</td></tr><tr><td><code class="prettyprint lang-java badcode">String unitAbbrev = "\u03bcs";</code></td><td>Poor: the reader has no idea what this is. 不好：读者无法理解这是什么。</td></tr><tr><td><code class="prettyprint lang-java">return '\ufeff' + content;
+       // byte order mark 字节序列标记</code></td><td>Good: use escapes for non-printable characters, and comment if necessary.<br>
+  好：用转义代表不可见字符，且有必要的注释</td></tr></tbody></table><p class="tip"><b>Tip:</b>&nbsp; Never make your code less readable simply out of fear that some programs might not handle non-ASCII characters properly. If that should happen, those programs are <strong>broken</strong> and they must be <strong>fixed</strong>.<br>
+<b>提示：</b>永远不要仅仅因为害怕一些程序可能无法正确处理非ASCII字符而让你的代码缺乏可读性。如果真遇到了，那么那些程序就是有问题的，它们必须被修复。
+</p><a name="filestructure"></a><a name="s3-source-file-structure">
+    </a><h2><a name="s3-source-file-structure">3 Source file structure 源代码文件结构&nbsp;</a><a href="#s3-source-file-structure"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h2>
+    <div><p>A source file consists of, <strong>in order</strong>:</p>
+<p>一个源代码文件由以下内容构成，<strong>按顺序</strong>：</p><ol><li>License or copyright information, if present<br>许可或版权信息，如果有</li><li>Package statement<br>包(package)语句</li><li>Import statements<br>导入(import)语句</li><li>Exactly one top-level class<br>只有一个顶级类(class)</li></ol></div><p><strong>Exactly one blank line</strong> separates each section that is present.</p>
+<p>出现的每段间<strong>只有一个空行</strong>分隔。</p><a name="s3.1-copyright-statement">
+    </a><h3><a name="s3.1-copyright-statement">3.1 License or copyright information, if present 许可或版权信息，如果有&nbsp;</a><a href="#s3.1-copyright-statement"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>If license or copyright information belongs in a file, it belongs here.</p>
+<p>如果许可或版权适用于一个文件，则写入文件中</p><a name="s3.2-package-statement">
+    </a><h3><a name="s3.2-package-statement">3.2 Package statement 包语句&nbsp;</a><a href="#s3.2-package-statement"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>The package statement is <strong>not line-wrapped</strong>. The column limit (Section 4.4,
+<a href="#s4.4-column-limit">Column limit: 80 or 100</a>) does not apply to package statements.</p>
+<p>包语句是<strong>不换行的</strong>，列宽限制(段落 4.4,
+<a href="#s4.4-column-limit">列宽限制：80或100</a>)不适用于包语句。</p><a name="imports"></a><a name="s3.3-import-statements">
+    </a><h3><a name="s3.3-import-statements">3.3 Import statements 导入语句&nbsp;</a><a href="#s3.3-import-statements"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <a name="s3.3.1-wildcard-imports">
+    </a><h4><a name="s3.3.1-wildcard-imports">3.3.1 No wildcard imports 不使用导入通配符&nbsp;</a><a href="#s3.3.1-wildcard-imports"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p><strong>Wildcard imports</strong>, static or otherwise, <strong>are not used</strong>.</p>
+<p>静态或其他，<strong>都不用导入通配符</strong>。</p><a name="s3.3.2-import-line-wrapping">
+    </a><h4><a name="s3.3.2-import-line-wrapping">3.3.2 No line-wrapping 无换行&nbsp;</a><a href="#s3.3.2-import-line-wrapping"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Import statements are <strong>not line-wrapped</strong>. The column limit (Section 4.4,
+<a href="#s4.4-column-limit">Column limit: 80 or 100</a>) does not apply to import
+statements.</p>
+<p>导入语句是<strong>不换行的</strong>。列宽显示(段落4.4,
+<a href="#s4.4-column-limit">列宽限制: 80或100</a>)不适用于导入语句。</p><a name="s3.3.3-import-ordering-and-spacing">
+    </a><h4><a name="s3.3.3-import-ordering-and-spacing">3.3.3 Ordering and spacing 顺序和间隔&nbsp;</a><a href="#s3.3.3-import-ordering-and-spacing"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Import statements are divided into the following groups, in this order, with each group
+separated by a single blank line:</p>
+<p>导入语句按以下顺序被分割成以下组，每组之间以一个空行分隔：</p><ol><li>All static imports in a single group<br>
+所有的静态导入为单独一组</li><li><code>com.google</code> imports
+  (only if this source file is in the <code>com.google</code> package
+  space)<br><code>com.google</code>导入
+  (仅当源代码文件在<code>com.google</code>包下)</li><li>Third-party imports, one group per top-level package, in ASCII sort order
+  <ul><li>for example: <code>android</code>, <code>com</code>, <code>junit</code>, <code>org</code>,
+    <code>sun</code></li></ul>
+第三方平台导入，按顶级包分组，按ASCII字符排序
+  <ul><li>例如：<code>android</code>, <code>com</code>, <code>junit</code>, <code>org</code>,
+    <code>sun</code></li></ul></li><li><code>java</code> imports<br><code>java</code>导入</li><li><code>javax</code> imports<br><code>javax</code>导入</li></ol><p>Within a group there are no blank lines, and the imported names appear in ASCII sort
+order. (<strong>Note:</strong> this is not the same as the import <em>statements</em> being in
+ASCII sort order; the presence of semicolons warps the result.)</p>
+<p>在一组内无空行分隔，导入名称按ASCII顺序排序。(<strong>注意：</strong>由于分号的存在，实际排序会不同于完整导入<em>语句</em>在ASCII中的排序结果。)</p><a name="s3.4-class-declaration">
+    </a><h3><a name="s3.4-class-declaration">3.4 Class declaration 类申明&nbsp;</a><a href="#s3.4-class-declaration"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <a name="oneclassperfile"></a><a name="s3.4.1-one-top-level-class">
+    </a><h4><a name="s3.4.1-one-top-level-class">3.4.1 Exactly one top-level class declaration 只有一个顶级类申明&nbsp;</a><a href="#s3.4.1-one-top-level-class"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Each top-level class resides in a source file of its own.</p>
+<p>每个顶级类(class)存在于它自己的源代码文件中。</p><a name="s3.4.2-class-member-ordering">
+    </a><h4><a name="s3.4.2-class-member-ordering">3.4.2 Class member ordering 类成员顺序&nbsp;</a><a href="#s3.4.2-class-member-ordering"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>The ordering of the members of a class can have a great effect on learnability, but there is
+no single correct recipe for how to do it. Different classes may order their members
+differently.</p>
+<p>类中成员的顺序可以被较容易的学习，但是没有一条简单正确的秘方告诉你如何做到。不同的类可能会有不同的成员顺序。</p><p>What is important is that each class order its members in <strong><em>some</em> logical
+order</strong>, which its maintainer could explain if asked. For example, new methods are not
+just habitually added to the end of the class, as that would yield "chronological by date
+added" ordering, which is not a logical ordering.</p>
+<p>重要的是每个类通过<strong><em>一些</em>逻辑顺序</strong>对它的成员排序，这些逻辑可以被解释。
+例如，新方法不只是习惯性的添加在类的末尾，因为这种“按添加时间顺序”排序不是一种逻辑顺序。</p><a name="overloads"></a><a name="s3.4.2.1-overloads-never-split">
+    </a><h5><a name="s3.4.2.1-overloads-never-split">3.4.2.1 Overloads: never split 重载：永远不要分开&nbsp;</a><a href="#s3.4.2.1-overloads-never-split"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h5>
+    <p>When a class has multiple constructors, or multiple methods with the same name, these appear
+sequentially, with no intervening members.</p>
+<p>当一个类有多个构造函数或多个同名方法，它们必须连续出现在一起，中间不含任何其他成员。</p><a name="s4-formatting">
+    </a><h2><a name="s4-formatting">4 Formatting 格式&nbsp;</a><a href="#s4-formatting"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h2>
+    <p class="terminology"><b>Terminology Note:</b>&nbsp;<em>block-like construct</em> refers to the body of a class, method or
+constructor. Note that, by Section 4.8.3.1 on
+<a href="file:///Users/HeatoN/Desktop/Google%20Java%20Style_files/Google%20Java%20Style.html">array initializers</a>, any array initializer
+<em>may</em> optionally be treated as if it were a block-like construct.</p>
+<p class="terminology"><b>术语说明：</b><em>块状概念</em>涉及到类、方法或构造函数的主体。注意：段落4.8.3.1提及的<a href="file:///Users/HeatoN/Desktop/Google%20Java%20Style_files/Google%20Java%20Style.html">数组初始化</a>，任何像块状概念的数组初始化代码<em>都可能</em>被随意放置。</p><a name="braces"></a><a name="s4.1-braces">
+    </a><h3><a name="s4.1-braces">4.1 Braces 大括号&nbsp;</a><a href="#s4.1-braces"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <a name="s4.1.1-braces-always-used">
+    </a><h4><a name="s4.1.1-braces-always-used">4.1.1 Braces are used where optional 哪里使用大括号&nbsp;</a><a href="#s4.1.1-braces-always-used"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    
+<p>Braces are used with
+<code class="prettyprint lang-java">if</code>,
+<code class="prettyprint lang-java">else</code>,
+<code class="prettyprint lang-java">for</code>,
+<code class="prettyprint lang-java">do</code> and
+<code class="prettyprint lang-java">while</code> statements, even when the
+body is empty or contains only a single statement.</p><p>大括号用在
+<code class="prettyprint lang-java">if</code>,
+<code class="prettyprint lang-java">else</code>,
+<code class="prettyprint lang-java">for</code>,
+<code class="prettyprint lang-java">do</code> 和
+<code class="prettyprint lang-java">while</code> 语句上，就算语句块中为空或者只有一行代码也要使用。</p><a name="s4.1.2-blocks-k-r-style">
+    </a><h4><a name="s4.1.2-blocks-k-r-style">4.1.2 Nonempty blocks: K &amp; R style 非空块：K &amp; R 风格&nbsp;</a><a href="#s4.1.2-blocks-k-r-style"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Braces follow the Kernighan and Ritchie style
+("<a href="http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html">Egyptian brackets</a>")
+for <em>nonempty</em> blocks and block-like constructs:</p>
+<p><em>非空</em>块和块状结构的大括号使用 Kernighan and Ritchie 风格
+("<a href="http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html">埃及括号</a>")：</p><ul><li>No line break before the opening brace. 在左大括号前没有换行。</li><li>Line break after the opening brace. 在左大括号后换行。</li><li>Line break before the closing brace. 右大括号前换行。</li><li>Line break after the closing brace <em>if</em> that brace terminates a statement or the body
+  of a method, constructor or <em>named</em> class. For example, there is <em>no</em> line break
+  after the brace if it is followed by <code class="prettyprint lang-java">else</code> or a
+  comma.<br>
+如果右大括号是语句的终结，或者是方法、构造函数、类的结束，那么在右大括号后应换行。例如，如果大括号后跟着<code class="prettyprint lang-java">else</code>或逗号，则不换行。</li></ul><p>Example 例子:</p><pre class="prettyprint lang-java">return new MyClass() {
+  @Override public void method() {
+    if (condition()) {
+      try {
+        something();
+      } catch (ProblemException e) {
+        recover();
+      }
+    }
+  }
+};
+</pre><p>A few exceptions for enum classes are given in Section 4.8.1,
+<a href="#s4.8.1-enum-classes">Enum classes</a>.</p>
+<p>一些枚举的特例会出现在段落 4.8.1,
+<a href="#s4.8.1-enum-classes">枚举类</a>.</p><a name="emptyblocks"></a><a name="s4.1.3-braces-empty-blocks">
+    </a><h4><a name="s4.1.3-braces-empty-blocks">4.1.3 Empty blocks: may be concise 空块：尽可能简洁&nbsp;</a><a href="#s4.1.3-braces-empty-blocks"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>An empty block or block-like construct <em>may</em> be closed immediately after it is
+opened, with no characters or line break in between
+(<code class="prettyprint lang-java">{}</code>), <strong>unless</strong> it is part of a
+<em>multi-block statement</em> (one that directly contains multiple blocks:
+<code class="prettyprint lang-java">if/else-if/else</code> or
+<code class="prettyprint lang-java">try/catch/finally</code>).</p>
+<p>空的块或块状结构<em>应该</em>在左括号后被立即关闭，没有字符或空行在(<code class="prettyprint lang-java">{}</code>)之间，<strong>除非</strong>它是<em>多块语句</em>的一部分 (语句直接包含多个块：<code class="prettyprint lang-java">if/else-if/else</code> 或
+<code class="prettyprint lang-java">try/catch/finally</code>).</p><p>Example 例子:</p><pre class="prettyprint lang-java">  void doNothing() {}
+</pre><a name="s4.2-block-indentation">
+    </a><h3><a name="s4.2-block-indentation">4.2 Block indentation: +2 spaces 块缩进：+2个空格&nbsp;</a><a href="#s4.2-block-indentation"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>Each time a new block or block-like construct is opened, the indent increases by two
+spaces. When the block ends, the indent returns to the previous indent level. The indent level
+applies to both code and comments throughout the block. (See the example in Section 4.1.2,
+<a href="#s4.1.2-blocks-k-r-style">Nonempty blocks: K &amp; R Style</a>.)</p>
+<p>每次开始一个新块或块状结构，缩进增加两个空格。当块结束时，返回成之前的缩进。缩进级别同时应用在代码和注释上。(见段落 4.1.2 中的例子，<a href="#s4.1.2-blocks-k-r-style">非空块： K &amp; R 风格</a>。)</p><a name="s4.3-one-statement-per-line">
+    </a><h3><a name="s4.3-one-statement-per-line">4.3 One statement per line 每行一条语句&nbsp;</a><a href="#s4.3-one-statement-per-line"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>Each statement is followed by a line-break.</p>
+<p>在每条语句后跟一个换行。</p><a name="columnlimit"></a><a name="s4.4-column-limit">
+    </a><h3><a name="s4.4-column-limit">4.4 Column limit: 80 or 100 行宽限制：80 或 100&nbsp;</a><a href="#s4.4-column-limit"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>
+  Projects are free to choose a column limit of either 80 or 100 characters.
+
+Except as noted below, any line that would exceed this limit must be line-wrapped, as explained in
+Section 4.5, <a href="#s4.5-line-wrapping">Line-wrapping</a>.
+</p>
+<p>项目可以自由选择行宽限制是80还是100字符。除了下面提及的，任何超过此限制的行都必须被分段，就像段落 4.5 中解释的, <a href="#s4.5-line-wrapping">分行</a>.
+</p><p><strong>Exceptions 特例:</strong></p><ol><li>Lines where obeying the column limit is not possible (for example, a long URL in Javadoc,
+  or a long JSNI method reference).<br>
+无法遵循行宽限制（例如：Javadoc中的长URL，或一个长的JSNI引用</li><li><code class="prettyprint lang-java">package</code> and
+  <code class="prettyprint lang-java">import</code> statements (see Sections
+  3.2 <a href="#s3.2-package-statement">Package statement</a> and
+  3.3 <a href="#s3.3-import-statements">Import statements</a>).<br>
+<code class="prettyprint lang-java">package</code> 和
+  <code class="prettyprint lang-java">import</code> 语句 (查看章节
+  3.2 <a href="#s3.2-package-statement">包语句</a> and
+  3.3 <a href="#s3.3-import-statements">导入语句</a>)。</li><li>Command lines in a comment that may be cut-and-pasted into a shell.<br>
+注释中可能被复制到命令行的命令。</li></ol><a name="s4.5-line-wrapping">
+    </a><h3><a name="s4.5-line-wrapping">4.5 Line-wrapping 分行&nbsp;</a><a href="#s4.5-line-wrapping"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p class="terminology"><b>Terminology Note:</b>&nbsp;When code that might otherwise legally occupy a single line is divided into
+multiple lines, typically to avoid overflowing the column limit, this activity is called
+<em>line-wrapping</em>.</p>
+<p class="terminology"><b>术语：</b>当无法控制在一行内的代码被分成多行，例如为了避免超过列宽，这种行为被称为<em>分行</em>。</p><p>There is no comprehensive, deterministic formula showing <em>exactly</em> how to line-wrap in
+every situation. Very often there are several valid ways to line-wrap the same piece of code.</p>
+<p>没有综合的、准确的公式去说明<em>究竟</em>如何去在各种情况下分行。通常相同的代码会有多种有效的分行方式。</p><p class="tip"><b>Tip:</b>&nbsp;extracting a method or local variable may solve the problem without the need to
+line-wrap.</p>
+<p class="tip"><b>提示：</b>提取一个方法或本地变量可能可以避免分行。</p><a name="s4.5.1-line-wrapping-where-to-break">
+    </a><h4><a name="s4.5.1-line-wrapping-where-to-break">4.5.1 Where to break 哪里分行&nbsp;</a><a href="#s4.5.1-line-wrapping-where-to-break"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>The prime directive of line-wrapping is: prefer to break at a
+<strong>higher syntactic level</strong>. Also:</p>
+<p>主要的分行指导方针是：完美的分行在<strong>更高的语法级别</strong>。 然而：</p><ol><li>When a line is broken at a <em>non-assignment</em> operator the break comes <em>before</em>
+  the symbol. (Note that this is not the same practice used in Google style for other languages,
+  such as C++ and JavaScript.)<br>
+  当一行被<em>非负值</em>操作分割时，在标点符号<em>之前</em>分行。（注意这和其他语言如 C++ 和 Javascript 的Google风格实践不同）
+    <ul><li>This also applies to the following "operator-like" symbols: the dot separator
+      (<code class="prettyprint lang-java">.</code>), the ampersand in type bounds
+      (<code class="prettyprint lang-java">&lt;T extends Foo &amp; Bar&gt;</code>), and the pipe in
+      catch blocks
+      (<code class="prettyprint lang-java">catch (FooException | BarException e)</code>).<br>
+      这也应用于后面这些“操作类”的符号：点(<code class="prettyprint lang-java">.</code>)、类型捆绑中的&amp;符(<code class="prettyprint lang-java">&lt;T extends Foo &amp; Bar&gt;</code>)、catch块中的管道符(<code class="prettyprint lang-java">catch (FooException | BarException e)</code>)。
+      </li></ul></li><li>When a line is broken at an <em>assignment</em> operator the break typically comes
+  <em>after</em> the symbol, but either way is acceptable.<br>
+  当一行被<em>负值</em>操作分割时，通常在标点符号<em>之后</em>分行，但两种方式都可以接受。
+    <ul><li>This also applies to the "assignment-operator-like" colon in an enhanced
+      <code class="prettyprint lang-java">for</code> ("foreach") statement.<br>
+      这也应用于增强<code class="prettyprint lang-java">for</code>("foreach")语句中“类似负值操作”的冒号。</li></ul></li><li>A method or constructor name stays attached to the open parenthesis
+  (<code class="prettyprint lang-java">(</code>) that follows it.<br>
+方法和构造函数名保持和它之后的左括号(<code class="prettyprint lang-java">(</code>)在同一行。</li><li>A comma (<code class="prettyprint lang-java">,</code>) stays attached to the token that
+  precedes it.<br>
+逗号(<code class="prettyprint lang-java">,</code>)之前不分行。</li></ol><a name="indentation"></a><a name="s4.5.2-line-wrapping-indent">
+    </a><h4><a name="s4.5.2-line-wrapping-indent">4.5.2 Indent continuation lines at least +4 spaces 续行锁进至少4个空格&nbsp;</a><a href="#s4.5.2-line-wrapping-indent"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>When line-wrapping, each line after the first (each <em>continuation line</em>) is indented
+at least +4 from the original line.</p>
+<p>当分行时，在第一行之后的每行(每条<em>续行</em>)至少比原始行多锁进4个空格</p><p>When there are multiple continuation lines, indentation may be varied beyond +4 as
+desired. In general, two continuation lines use the same indentation level if and only if they
+begin with syntactically parallel elements.</p>
+<p>当有多条续行时，锁进可能被改变超过要求的4个空格。一般情况下，当且仅当两条续行在语法上平行时，使用相同的锁进级别。</p><p>Section 4.6.3 on <a href="#s4.6.3-horizontal-alignment">Horizontal alignment</a> addresses
+the discouraged practice of using a variable number of spaces to align certain tokens with
+previous lines.</p>
+<p>段落 4.6.3 <a href="#s4.6.3-horizontal-alignment">水平对齐</a>解释这种糟糕的实践关于使用不定的空格数来对齐之前行的某个标记。</p><a name="s4.6-whitespace">
+    </a><h3><a name="s4.6-whitespace">4.6 Whitespace 空白&nbsp;</a><a href="#s4.6-whitespace"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <a name="s4.6.1-vertical-whitespace">
+    </a><h4><a name="s4.6.1-vertical-whitespace">4.6.1 Vertical Whitespace 空行&nbsp;</a><a href="#s4.6.1-vertical-whitespace"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>A single blank line appears 单空行出现在:</p><ol><li><em>Between</em> consecutive members (or initializers) of a class: fields, constructors,
+  methods, nested classes, static initializers, instance initializers.<br>
+  在一个类的连续的成员（或初始化器）<em>之间</em>：字段、构造函数、方法、内部类、静态初始化器、实例初始化器。
+  <ul><li><span class="exception"><b>Exception:</b>&nbsp;a blank line between two consecutive fields (having no other code
+    between them) is optional. Such blank lines are used as needed to create <em>logical
+    groupings</em> of fields.</span><br>
+    <span class="exception"><b>特例：</b>在两个连续的字段之间（之间没有任何其他代码）可以没有空行。空行被用来根据需要创建字段<em>逻辑组</em>。</span></li></ul></li><li>Within method bodies, as needed to create <em>logical groupings</em> of statements.<br>
+  在方法体内根据需要来创建语句间的<em>逻辑组</em>。</li><li><em>Optionally</em> before the first member or after the last member of the class (neither
+  encouraged nor discouraged).<br>
+<em>可选的</em>在类的第一个成员或最后一个成员(不鼓励也不反对)。</li><li>As required by other sections of this document (such as Section 3.3,
+  <a href="#s3.3-import-statements">Import statements</a>).<br>
+这篇文档的其他章节要求的(就像段落 3.3 <a href="#s3.3-import-statements">导入语句</a>)。</li></ol><p><em>Multiple</em> consecutive blank lines are permitted, but never required (or encouraged).</p>
+<p><em>多条</em>连续空行是被允许的，但不被要求（或鼓励）的。</p><a name="s4.6.2-horizontal-whitespace">
+    </a><h4><a name="s4.6.2-horizontal-whitespace">4.6.2 Horizontal whitespace 水平空白&nbsp;</a><a href="#s4.6.2-horizontal-whitespace"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    
+<p>Beyond where required by the language or other style rules, and apart from literals, comments and
+Javadoc, a single ASCII space also appears in the following places <strong>only</strong>.</p><p>语言或其他规则要求的以外，除了字符串、注释、Javadoc，单ASCII空格也<strong>只</strong>出现在以下地方。</p><ol><li>Separating any reserved word, such as
+  <code class="prettyprint lang-java">if</code>,
+  <code class="prettyprint lang-java">for</code> or
+  <code class="prettyprint lang-java">catch</code>, from an open parenthesis
+  (<code class="prettyprint lang-java">(</code>)
+  that follows it on that line<br>
+分割任何保留词，如<code class="prettyprint lang-java">if</code>、<code class="prettyprint lang-java">for</code>或<code class="prettyprint lang-java">catch</code>和它之后的左括号(<code class="prettyprint lang-java">(</code>)</li><li>Separating any reserved word, such as
+  <code class="prettyprint lang-java">else</code> or
+  <code class="prettyprint lang-java">catch</code>, from a closing curly brace
+  (<code class="prettyprint lang-java">}</code>) that precedes it on that line<br>
+分割任何保留词，如<code class="prettyprint lang-java">else</code>或<code class="prettyprint lang-java">catch</code>之前同行的右大括号(<code class="prettyprint lang-java">}</code>)</li><li>Before any open curly brace
+  (<code class="prettyprint lang-java">{</code>), with two exceptions:<br>
+  在任何左大括号(<code class="prettyprint lang-java">{</code>)前，但有两个例外：
+  <ul><li><code class="prettyprint lang-java">@SomeAnnotation({a, b})</code> (no space is used) (没有用空格)</li><li><code class="prettyprint lang-java">String[][] x = {{"foo"}};</code> (no space is required
+  between <code class="prettyprint lang-java">{{</code>, by item 8 below)
+  (两个<code class="prettyprint lang-java">{{</code>之间不用空格，见下面第8项)
+</li></ul></li><li>On both sides of any binary or ternary operator. This also applies to the following
+  "operator-like" symbols:<br>
+  在任何二元或三元运算符的两侧。这也应用于以下“类操作符”标记：
+  <ul><li>the ampersand in a conjunctive type bound:
+  <code class="prettyprint lang-java">&lt;T extends Foo &amp; Bar&gt;</code><br>
+连接类型的&amp;符号：<code class="prettyprint lang-java">&lt;T extends Foo &amp; Bar&gt;</code></li><li>the pipe for a catch block that handles multiple exceptions:
+  <code class="prettyprint lang-java">catch (FooException | BarException e)</code><br>
+操作多异常的catch块里的管道符(|)：<code class="prettyprint lang-java">catch (FooException | BarException e)</code></li><li>the colon (<code class="prettyprint lang-java">:</code>) in an enhanced
+  <code class="prettyprint lang-java">for</code> ("foreach") statement<br>
+增强<code class="prettyprint lang-java">for</code>语句("foreach")里的冒号(<code class="prettyprint lang-java">:</code>)</li></ul></li><li>After <code class="prettyprint lang-java">,:;</code> or the closing parenthesis
+  (<code class="prettyprint lang-java">)</code>) of a cast<br>
+cast的<code class="prettyprint lang-java">,:;</code>或有括号(<code class="prettyprint lang-java">)</code>)之后</li><li>On both sides of the double slash (<code class="prettyprint lang-java">//</code>) that
+  begins an end-of-line comment. Here, multiple spaces are allowed, but not required.<br>
+在行里注释——双斜杠的(<code class="prettyprint lang-java">//</code>)两侧。这里多个空格也可以，但不是必须的。</li><li>Between the type and variable of a declaration:
+  <code class="prettyprint lang-java">List&lt;String&gt; list</code><br>
+声明的类型和变量名之间：<code class="prettyprint lang-java">List&lt;String&gt; list</code></li><li><em>Optional</em> just inside both braces of an array initializer<br>
+  <em>可选的</em>在数组初始化的大括号内
+  <ul><li><code class="prettyprint lang-java">new int[] {5, 6}</code> and
+  <code class="prettyprint lang-java">new int[] { 5, 6 }</code> are both valid<br>
+<code class="prettyprint lang-java">new int[] {5, 6}</code>和<code class="prettyprint lang-java">new int[] { 5, 6 }</code>都可以</li></ul></li></ol><p class="note"><b>Note:</b>&nbsp;this rule never requires or forbids additional space at the start or end of a
+line, only <em>interior</em> space.</p>
+<p class="note"><b>注意：</b>这些规则没有要求在行首或行尾添加多余的空格，仅<em>行内</em>的空格。</p><a name="s4.6.3-horizontal-alignment">
+    </a><h4><a name="s4.6.3-horizontal-alignment">4.6.3 Horizontal alignment: never required 水平对齐：永远不要&nbsp;</a><a href="#s4.6.3-horizontal-alignment"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p class="terminology"><b>Terminology Note:</b>&nbsp;Horizontal alignment is the practice of adding a variable number of
+additional spaces in your code with the goal of making certain tokens appear directly below certain
+other tokens on previous lines.</p>
+<p class="terminology"><b>术语说明：</b>水平对齐是通过在代码中添加多个空格，从而使上下行之间像诗一样整齐的实践。</p><p>This practice is permitted, but is <strong>never required</strong> by Google Style. It is not
+even required to <em>maintain</em> horizontal alignment in places where it was already used.</p>
+<p>这个实践是被允许的，但在Google风格中是<strong>永远不需要的</strong>。已经使用的地方，也不用<em>维持</em>原有的水平对齐。</p><p>Here is an example without alignment, then using alignment:</p>
+<p>这里是一个不对齐的例子和一个对齐的例子：</p><pre class="prettyprint lang-java">private int x; // this is fine 这样很好
+private Color color; // this too 这也是
+
+private int   x;      // permitted, but future edits 被允许，但以后改掉
+private Color color;  // may leave it unaligned 可以不对齐
+</pre>
+<p class="tip"><b>Tip:</b>&nbsp;Alignment can aid readability, but it creates problems for future maintenance.
+Consider a future change that needs to touch just one line. This change may leave the
+formerly-pleasing formatting mangled, and that is <strong>allowed</strong>. More often it prompts
+the coder (perhaps you) to adjust whitespace on nearby lines as well, possibly triggering a
+cascading series of reformattings. That one-line change now has a "blast radius." This can at worst
+result in pointless busywork, but at best it still corrupts version history information, slows down
+reviewers and exacerbates merge conflicts.</p><p class="tip"><b>提示：</b>对齐可以增加可读性，但给日后维护带来了问题。考虑一个未来的改变，需要改变的只有一行，这个改变可能导致原来良好的格式错位并且<strong>被允许</strong>。更常见的，它会提示程序员（可能是你）也要优化附近行的空格，可能出发一系列关联的重新格式化。一行的改变现在成为一个“爆炸辐射”。导致糟糕的结果，不仅做毫无疑义的无用功，还会让版本历史信息变糟，降低代码审查的速度和增加合并冲突。</p><a name="parentheses"></a><a name="s4.7-grouping-parentheses">
+    </a><h3><a name="s4.7-grouping-parentheses">4.7 Grouping parentheses: recommended 括号分组：推荐&nbsp;</a><a href="#s4.7-grouping-parentheses"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    
+<p>Optional grouping parentheses are omitted only when author and reviewer agree that there is no
+reasonable chance the code will be misinterpreted without them, nor would they have made the code
+easier to read. It is <em>not</em> reasonable to assume that every reader has the entire Java
+operator precedence table memorized.</p><p>仅当程序员和代码审核员都同意没有括号分组时代码不会被误解、不会影响代码可读性时，括号分组才能被省略。 <em>没有</em>理由去假设每个代码阅读者都能记住完整的Java操作符优先级。</p><a name="s4.8-specific-constructs">
+    </a><h3><a name="s4.8-specific-constructs">4.8 Specific constructs 特殊结构&nbsp;</a><a href="#s4.8-specific-constructs"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <a name="s4.8.1-enum-classes">
+    </a><h4><a name="s4.8.1-enum-classes">4.8.1 Enum classes 枚举类&nbsp;</a><a href="#s4.8.1-enum-classes"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>After each comma that follows an enum constant, a line-break is optional.</p>
+<p>逗号后面跟着枚举常量的话，分行是可选的。</p><p>An enum class with no methods and no documentation on its constants may optionally be formatted
+as if it were an array initializer:</p>
+<p>常量上不包含方法和文档的枚举类可以被格式成像数组的初始化：</p><pre class="prettyprint lang-java">private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }
+</pre><p>Since enum classes <em>are classes</em>, all other rules for formatting classes apply.</p>
+<p>自从枚举类<em>成为类</em>，所有其他格式化类的规则都应用于枚举类。</p><a name="localvariables"></a><a name="s4.8.2-variable-declarations">
+    </a><h4><a name="s4.8.2-variable-declarations">4.8.2 Variable declarations 变量声明&nbsp;</a><a href="#s4.8.2-variable-declarations"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <a name="s4.8.2.1-variables-per-declaration">
+    </a><h5><a name="s4.8.2.1-variables-per-declaration">4.8.2.1 One variable per declaration 每次声明一个变量&nbsp;</a><a href="#s4.8.2.1-variables-per-declaration"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h5>
+    <p>Every variable declaration (field or local) declares only one variable: declarations such as
+<code class="prettyprint lang-java badcode">int a, b;</code> are not used.</p>
+<p>每个变量声明（字段或本地）只声明一个变量：不使用这种声明<code class="prettyprint lang-java badcode">int a, b;</code>。</p><a name="s4.8.2.2-variables-limited-scope">
+    </a><h5><a name="s4.8.2.2-variables-limited-scope">4.8.2.2 Declared when needed, initialized as soon as possible 需要时声明，尽可能快的初始化&nbsp;</a><a href="file:///Users/HeatoN/Desktop/Google%20Java%20Style_files/Google%20Java%20Style.html"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h5>
+    <p>Local variables are <strong>not</strong> habitually declared at the start of their containing
+block or block-like construct. Instead, local variables are declared close to the point they are
+first used (within reason), to minimize their scope. Local variable declarations typically have
+initializers, or are initialized immediately after declaration.</p>
+<p>本地变量<strong>不</strong>是习惯性地声明在内容块地或块状结构的顶部。代替的，本地变量被声明在最靠近它们第一次使用的地方(合理地)，为了最小化它们的使用范围。本地变量声明通常伴随着初始化，或声明后马上被初始化。</p><a name="s4.8.3-arrays">
+    </a><h4><a name="s4.8.3-arrays">4.8.3 Arrays 数组&nbsp;</a><a href="#s4.8.3-arrays"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <a name="s4.8.3.1-array-initializers">
+    </a><h5><a name="s4.8.3.1-array-initializers">4.8.3.1 Array initializers: can be "block-like" 数组初始化：可以像块状&nbsp;</a><a href="file:///Users/HeatoN/Desktop/Google%20Java%20Style_files/Google%20Java%20Style.html"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h5>
+    <p>Any array initializer may <em>optionally</em> be formatted as if it were a "block-like
+construct." For example, the following are all valid (<strong>not</strong> an exhaustive
+list):</p>
+<p>任何数组初始化可以<em>可选的</em>被格式成“块状结构”。比如，下面都是可以的(<strong>不是</strong>一个详尽的列表)：</p><pre class="prettyprint lang-java">new int[] {           new int[] {
+  0, 1, 2, 3            0,
+}                       1,
+                        2,
+new int[] {             3,
+  0, 1,               }
+  2, 3
+}                     new int[]
+                          {0, 1, 2, 3}
+</pre><a name="s4.8.3.2-array-declarations">
+    </a><h5><a name="s4.8.3.2-array-declarations">4.8.3.2 No C-style array declarations 不能是C风格的数组声明&nbsp;</a><a href="#s4.8.3.2-array-declarations"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h5>
+    
+<p>The square brackets form a part of the <em>type</em>, not the variable:
+<code class="prettyprint lang-java">String[] args</code>, not
+<code class="prettyprint lang-java badcode">String args[]</code>.</p><p>方括号是<em>类型</em>的一部分，不是变量的一部分：<code class="prettyprint lang-java">String[] args</code>，不是<code class="prettyprint lang-java badcode">String args[]</code>。</p><a name="s4.8.4-switch">
+    </a><h4><a name="s4.8.4-switch">4.8.4 Switch statements Switch 语句&nbsp;</a><a href="#s4.8.4-switch"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    
+<p class="terminology"><b>Terminology Note:</b>&nbsp;Inside the braces of a <em>switch block</em> are one or more
+<em>statement groups</em>. Each statement group consists of one or more <em>switch labels</em>
+(either <code class="prettyprint lang-java">case FOO:</code> or
+<code class="prettyprint lang-java">default:</code>), followed by one or more statements.</p><p class="terminology"><b>术语说明：</b><em>switch块</em>的大括号内是一个或多个<em>语句组</em>。每个语句组由一个或多个<em>switch标签</em>
+(<code class="prettyprint lang-java">case FOO:</code> 或<code class="prettyprint lang-java">default:</code>) 组成，标签后跟着一条或多条语句。</p><a name="s4.8.4.1-switch-indentation">
+    </a><h5><a name="s4.8.4.1-switch-indentation">4.8.4.1 Indentation 缩进&nbsp;</a><a href="#s4.8.4.1-switch-indentation"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h5>
+    
+<p>As with any other block, the contents of a switch block are indented +2.</p><p>和其他代码块一样，switch块的内容缩进 +2。</p>
+<p>After a switch label, a newline appears, and the indentation level is increased +2, exactly as
+if a block were being opened. The following switch label returns to the previous indentation
+level, as if a block had been closed.</p><p>在switch标签后的新行，缩进级别再+2，实际上就像新开始一个新代码块。下一个switch标签返回之前的缩进级别，就像一个代码块结束。</p><a name="fallthrough"></a><a name="s4.8.4.2-switch-fall-through">
+    </a><h5><a name="s4.8.4.2-switch-fall-through">4.8.4.2 Fall-through: commented 下降穿过：需注释&nbsp;</a><a href="#s4.8.4.2-switch-fall-through"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h5>
+    
+<p>Within a switch block, each statement group either terminates abruptly (with a
+<code class="prettyprint lang-java">break</code>,
+<code class="prettyprint lang-java">continue</code>,
+<code class="prettyprint lang-java">return</code> or thrown exception), or is marked with a comment
+to indicate that execution will or <em>might</em> continue into the next statement group. Any
+comment that communicates the idea of fall-through is sufficient (typically
+<code class="prettyprint lang-java">// fall through</code>). This special comment is not required in
+the last statement group of the switch block. Example:</p><p>在switch块中，每个语句组，包括立刻结束的(包含
+<code class="prettyprint lang-java">break</code>,
+<code class="prettyprint lang-java">continue</code>,
+<code class="prettyprint lang-java">return</code> 或者抛出异常)，或被注释标记的，表明执行<em>可能</em>继续进入下个语句组。任何注释只要能说明代码执行会降到下一个case就行 (代表性地
+<code class="prettyprint lang-java">// fall through</code>). 最后一个switch块可以省略这个特殊的注释。例如：</p><pre class="prettyprint lang-java">switch (input) {
+  case 1:
+  case 2:
+    prepareOneOrTwo();
+    // fall through
+  case 3:
+    handleOneTwoOrThree();
+    break;
+  default:
+    handleLargeNumber(input);
+}
+</pre><a name="s4.8.4.3-switch-default">
+    </a><h5><a name="s4.8.4.3-switch-default">4.8.4.3 The default case is present 必须有default&nbsp;</a><a href="#s4.8.4.3-switch-default"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h5>
+    <p>Each switch statement includes a <code class="prettyprint lang-java">default</code> statement
+group, even if it contains no code.</p>
+<p>每个switch语句包含一个<code class="prettyprint lang-java">default</code>语句组，就算里面没有代码。</p><a name="annotations"></a><a name="s4.8.5-annotations">
+    </a><h4><a name="s4.8.5-annotations">4.8.5 Annotations 注解&nbsp;</a><a href="#s4.8.5-annotations"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    
+<p>Annotations applying to a class, method or constructor appear immediately after the
+documentation block, and each annotation is listed on a line of its own (that is, one annotation
+per line). These line breaks do not constitute line-wrapping (Section
+4.5, <a href="#s4.5-line-wrapping">Line-wrapping</a>), so the indentation level is not
+increased. Example:</p><p>类、方法或构造函数上的注解，应紧跟着文档注释，并且每个注解一行。这些行不用遵循分行规则 (段落4.5, <a href="#s4.5-line-wrapping">分行</a>)，所以不用增加缩进。例如：</p><pre class="prettyprint lang-java">@Override
+@Nullable
+public String getNameIfPresent() { ... }
+</pre><p class="exception"><b>Exception:</b>&nbsp;a <em>single</em> parameterless annotation <em>may</em> instead appear
+together with the first line of the signature, for example:</p>
+<p class="exception"><b>除了：</b>一个<em>单独</em>无参数的注解<em>可以</em>出现在签名的第一行，例如：</p><pre class="prettyprint lang-java">@Override public int hashCode() { ... }
+</pre><p>Annotations applying to a field also appear immediately after the documentation block, but in
+this case, <em>multiple</em> annotations (possibly parameterized) may be listed on the same line;
+for example:</p>
+<p>字段上的注解也应该紧跟在文档注释之后，但这个例子，<em>多个</em>注解(可能是参数化的)可以放在同一行。例如：</p><pre class="prettyprint lang-java">@Partial @Mock DataLoader loader;
+</pre><p>There are no specific rules for formatting parameter and local variable annotations.</p>
+<p>没有特殊规则适用于格式化参数和本地变量的注解。</p><a name="comments"></a><a name="s4.8.6-comments">
+    </a><h4><a name="s4.8.6-comments">4.8.6 Comments 注释&nbsp;</a><a href="#s4.8.6-comments"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <a name="s4.8.6.1-block-comment-style">
+    </a><h5><a name="s4.8.6.1-block-comment-style">4.8.6.1 Block comment style 注释块风格&nbsp;</a><a href="#s4.8.6.1-block-comment-style"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h5>
+    
+<p>Block comments are indented at the same level as the surrounding code. They may be in
+<code class="prettyprint lang-java">/* ... */</code> style or
+<code class="prettyprint lang-java">// ...</code> style. For multi-line
+<code class="prettyprint lang-java">/* ... */</code> comments, subsequent lines must start with
+<code>*</code> aligned with the <code>*</code> on the previous line.</p><p>注释块的缩进和它周围的代码一样。它们可以是
+<code class="prettyprint lang-java">/* ... */</code> 风格或
+<code class="prettyprint lang-java">// ...</code> 风格。多行
+<code class="prettyprint lang-java">/* ... */</code> 注释，附行必须以
+<code>*</code> 开始并和之前行的 <code>*</code> 对其。</p><pre class="prettyprint lang-java">/*
+ * This is          // And so           /* Or you can
+ * okay.            // is this.          * even do this. */
+ */
+</pre><p>Comments are not enclosed in boxes drawn with asterisks or other characters.</p>
+<p>不要用星号或其他字符把注释画在框框里。</p>
+<p class="tip"><b>Tip:</b>&nbsp;When writing multi-line comments, use the
+<code class="prettyprint lang-java">/* ... */</code> style if you want automatic code formatters to
+re-wrap the lines when necessary (paragraph-style). Most formatters don't re-wrap lines in
+<code class="prettyprint lang-java">// ...</code> style comment blocks.</p><p class="tip"><b>提示：</b>当写多行注释时，如果你想在必要时自动调整列宽换行，用
+<code class="prettyprint lang-java">/* ... */</code> 风格(段落风格)。大多数格式化不会调整
+<code class="prettyprint lang-java">// ...</code> 风格的行。</p><a name="modifiers"></a><a name="s4.8.7-modifiers">
+    </a><h4><a name="s4.8.7-modifiers">4.8.7 Modifiers 修饰符&nbsp;</a><a href="#s4.8.7-modifiers"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Class and member modifiers, when present, appear in the order
+recommended by the Java Language Specification:
+</p>
+<p>类或成员的修饰符按Java语言规范的顺序出现：</p><pre>public protected private abstract static final transient volatile synchronized native strictfp
+</pre><a name="s4.8.8-numeric-literals">
+    </a><h4><a name="s4.8.8-numeric-literals">4.8.8 Numeric Literals 数字字符&nbsp;</a><a href="#s4.8.8-numeric-literals"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    
+<p><code>long</code>-valued integer literals use an uppercase <code>L</code> suffix, never
+lowercase (to avoid confusion with the digit <code>1</code>). For example, <code>3000000000L</code>
+rather than <code class="badcode">3000000000l</code>.</p><p><code>long</code>-用大写后缀<code>L</code>定义长整型，永远不要用小写 (避免和数字<code>1</code>混淆)。例如：<code>3000000000L</code>
+好于 <code class="badcode">3000000000l</code>。</p><a name="naming"></a><a name="s5-naming">
+    </a><h2><a name="s5-naming">5 Naming 命名&nbsp;</a><a href="#s5-naming"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h2>
+    <a name="s5.1-identifier-names">
+    </a><h3><a name="s5.1-identifier-names">5.1 Rules common to all identifiers 规则说明对所有标识符有效&nbsp;</a><a href="#s5.1-identifier-names"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>Identifiers use only ASCII letters and digits, and in two cases noted below, underscores. Thus
+each valid identifier name is matched by the regular expression <code>\w+</code> .</p>
+<p>标识符只用 ASCII字符、数字，和下面提到的两种情况下可以有下划线。因此每个有效的标识符名称应该能正确匹配正则表达式 <code>\w+</code> 。</p><p> In Google Style special prefixes or
+suffixes, like those seen in the examples <code class="prettyprint lang-java badcode">name_</code>,
+<code class="prettyprint lang-java badcode">mName</code>,
+<code class="prettyprint lang-java badcode">s_name</code> and
+<code class="prettyprint lang-java badcode">kName</code>, are <strong>not</strong> used.</p>
+<p>在Google风格中，<strong>不</strong>要使用特殊的前缀和后缀，像这样的 <code class="prettyprint lang-java badcode">name_</code>,
+<code class="prettyprint lang-java badcode">mName</code>,
+<code class="prettyprint lang-java badcode">s_name</code> 和
+<code class="prettyprint lang-java badcode">kName</code>。</p><a name="s5.2-specific-identifier-names">
+    </a><h3><a name="s5.2-specific-identifier-names">5.2 Rules by identifier type 按标识符类型分的规则&nbsp;</a><a href="#s5.2-specific-identifier-names"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <a name="s5.2.1-package-names">
+    </a><h4><a name="s5.2.1-package-names">5.2.1 Package names 包名&nbsp;</a><a href="#s5.2.1-package-names"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Package names are all lowercase, with consecutive words simply concatenated together (no
+underscores). For example, <code>com.example.deepspace</code>, not
+<code class="badcode">com.example.deepSpace</code> or
+<code class="badcode">com.example.deep_space</code>.</p>
+<p>包名全部小写，由连续的单词简单的串联起来(没有下划线)。例如： <code>com.example.deepspace</code>, 而不是
+<code class="badcode">com.example.deepSpace</code> 或
+<code class="badcode">com.example.deep_space</code>。</p><a name="s5.2.2-class-names">
+    </a><h4><a name="s5.2.2-class-names">5.2.2 Class names 类名&nbsp;</a><a href="#s5.2.2-class-names"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Class names are written in <a href="#s5.3-camel-case">UpperCamelCase</a>.</p>
+<p>类名写成<a href="#s5.3-camel-case">大驼峰式命名</a>.</p>
+<p>Class names are typically nouns or noun phrases. For example,
+<code class="prettyprint lang-java">Character</code> or
+<code class="prettyprint lang-java">ImmutableList</code>. Interface names may also be nouns or
+noun phrases (for example, <code class="prettyprint lang-java">List</code>), but may sometimes be
+adjectives or adjective phrases instead (for example,
+<code class="prettyprint lang-java">Readable</code>).</p><p>代表性地，类名是名词或名称短语。例如：
+<code class="prettyprint lang-java">Character</code> 或
+<code class="prettyprint lang-java">ImmutableList</code>。接口名称也可以是名词或名词短语(例如：<code class="prettyprint lang-java">List</code>)，但是有时可能是形容词或形容词短语(例如：<code class="prettyprint lang-java">Readable</code>)。</p><p>There are no specific rules or even well-established conventions for naming annotation types.</p>
+<p>没有特殊规则或甚至已确认的惯例用来在名称中注解类型。</p><p><em>Test</em> classes are named starting with the name of the class they are testing, and ending
+with <code class="prettyprint lang-java">Test</code>. For example,
+<code class="prettyprint lang-java">HashTest</code> or
+<code class="prettyprint lang-java">HashIntegrationTest</code>.</p>
+<p>被测试的类名，并在结尾加上<code class="prettyprint lang-java">Test</code>，来命名<em>测试</em>类。例如：
+<code class="prettyprint lang-java">HashTest</code> 或
+<code class="prettyprint lang-java">HashIntegrationTest</code>。</p><a name="s5.2.3-method-names">
+    </a><h4><a name="s5.2.3-method-names">5.2.3 Method names 方法名&nbsp;</a><a href="#s5.2.3-method-names"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Method names are written in <a href="#s5.3-camel-case">lowerCamelCase</a>.</p>
+<p>方法名写成<a href="#s5.3-camel-case">小驼峰式命名</a>。</p><p>Method names are typically verbs or verb phrases. For example,
+<code class="prettyprint lang-java">sendMessage</code> or
+<code class="prettyprint lang-java">stop</code>.</p>
+<p>代表性地，方法名是动词或动词短语。例如：
+<code class="prettyprint lang-java">sendMessage</code> 或
+<code class="prettyprint lang-java">stop</code>。</p><p>Underscores may appear in JUnit <em>test</em> method names to separate logical components of the
+name. One typical pattern is <code>test<i>&lt;MethodUnderTest&gt;</i>_<i>&lt;state&gt;</i></code>,
+for example <code class="prettyprint lang-java">testPop_emptyStack</code>. There is no One Correct
+Way to name test methods.</p>
+<p>下划线可以出现在JUnit<em>测试</em>方法名中，用来分割名称中的逻辑单元。一种代表性的模式是
+  <code>test<i>&lt;MethodUnderTest&gt;</i>_<i>&lt;state&gt;</i></code>，
+例如：<code class="prettyprint lang-java">testPop_emptyStack</code>。命名测试方法并没有唯一的正确方式。</p><a name="constants"></a><a name="s5.2.4-constant-names">
+    </a><h4><a name="s5.2.4-constant-names">5.2.4 Constant names 常量名&nbsp;</a><a href="#s5.2.4-constant-names"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Constant names use <code class="prettyprint lang-java">CONSTANT_CASE</code>: all uppercase
+letters, with words separated by underscores. But what <em>is</em> a constant, exactly?</p>
+<p>常量名用<code class="prettyprint lang-java">CONSTANT_CASE</code>: 全部字符大写，用下划线分割单词。但是，到底什么<em>是</em>真正的常量？</p><p>Every constant is a static final field, but not all static final fields are constants. Before
+choosing constant case, consider whether the field really <em>feels like</em> a constant. For
+example, if any of that instance's observable state can change, it is almost certainly not a
+constant. Merely <em>intending</em> to never mutate the object is generally not
+enough. Examples:</p>
+<p>每个常量都是 static final 字段，但不是所有 static final 字段都是常量。在选择常量模式前，考虑这个字段是否真的<em>是</em>常量。
+  例如：如果那个实例的状态可以改变，那它就一定不是常量。仅仅不<em>打算</em>改变这个对象一般是不够的。例子：</p><pre class="prettyprint lang-java">// Constants
+static final int NUMBER = 5;
+static final ImmutableList&lt;String&gt; NAMES = ImmutableList.of("Ed", "Ann");
+static final Joiner COMMA_JOINER = Joiner.on(',');  // because Joiner is immutable
+static final SomeMutableType[] EMPTY_ARRAY = {};
+enum SomeEnum { ENUM_CONSTANT }
+
+// Not constants
+static String nonFinal = "non-final";
+final String nonStatic = "non-static";
+static final Set&lt;String&gt; mutableCollection = new HashSet&lt;String&gt;();
+static final ImmutableSet&lt;SomeMutableType&gt; mutableElements = ImmutableSet.of(mutable);
+static final Logger logger = Logger.getLogger(MyClass.getName());
+static final String[] nonEmptyArray = {"these", "can", "change"};
+</pre><p>These names are typically nouns or noun phrases. 代表性地，这些名字是名词或名词短语。</p><a name="s5.2.5-non-constant-field-names">
+    </a><h4><a name="s5.2.5-non-constant-field-names">5.2.5 Non-constant field names 非常量字段名&nbsp;</a><a href="#s5.2.5-non-constant-field-names"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Non-constant field names (static or otherwise) are written
+in <a href="#s5.3-camel-case">lowerCamelCase</a>.</p>
+<p>非常量字段名(静态或其他)参照
+<a href="#s5.3-camel-case">小驼峰式命名</a>。</p><p>These names are typically nouns or noun phrases.  For example,
+<code class="prettyprint lang-java">computedValues</code> or
+<code class="prettyprint lang-java">index</code>.</p>
+<p>代表性地，这些名字式名词或名词短语。例如：
+<code class="prettyprint lang-java">computedValues</code> 或
+<code class="prettyprint lang-java">index</code>。</p><a name="s5.2.6-parameter-names">
+    </a><h4><a name="s5.2.6-parameter-names">5.2.6 Parameter names 参数名&nbsp;</a><a href="#s5.2.6-parameter-names"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Parameter names are written in <a href="#s5.3-camel-case">lowerCamelCase</a>.</p>
+<p>参数名参照<a href="#s5.3-camel-case">小驼峰式命名</a>。</p><p>One-character parameter names should be avoided.</p>
+<p>应避免单字符参数名。</p><a name="s5.2.7-local-variable-names">
+    </a><h4><a name="s5.2.7-local-variable-names">5.2.7 Local variable names 本地变量名&nbsp;</a><a href="#s5.2.7-local-variable-names"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Local variable names are written in <a href="#s5.3-camel-case">lowerCamelCase</a>, and can be
+abbreviated more liberally than other types of names.</p>
+<p>本地变量名参照<a href="#s5.3-camel-case">小驼峰式命名</a>，可以比其他类型的命名更自由更简短。</p><p>However, one-character names should be avoided, except for temporary and looping variables.</p>
+<p>然而，应避免但字符名称，除非是临时性变量或循环变量。</p><p>Even when final and immutable, local variables are not considered to be constants, and should not
+be styled as constants.</p>
+<p>就算本地变量是 final 或不可变的，它也不被认为是常量，不应该像常量一样命名。</p><a name="s5.2.8-type-variable-names">
+    </a><h4><a name="s5.2.8-type-variable-names">5.2.8 Type variable names 范型变量名&nbsp;</a><a href="#s5.2.8-type-variable-names"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Each type variable is named in one of two styles:</p>
+<p>范型变量名被命名成两种风格之一：</p><ul><li>A single capital letter, optionally followed by a single numeral (such as
+  <code class="prettyprint lang-java">E</code>, <code class="prettyprint lang-java">T</code>,
+  <code class="prettyprint lang-java">X</code>, <code class="prettyprint lang-java">T2</code>)<br>
+  单个大写字符，可以在后面跟单个数字(就像
+  <code class="prettyprint lang-java">E</code>, <code class="prettyprint lang-java">T</code>,
+  <code class="prettyprint lang-java">X</code>, <code class="prettyprint lang-java">T2</code>)
+  </li><li>A name in the form used for classes (see Section 5.2.2, <a href="#s5.2.2-class-names">Class names</a>), followed by the capital letter <code class="prettyprint lang-java">T</code> (examples:
+  <code class="prettyprint lang-java">RequestT</code>, <code class="prettyprint lang-java">FooBarT</code>).
+  <br>
+用类的格式 (见段落 5.2.2, <a href="#s5.2.2-class-names">类名</a>)，跟一个大写字母
+  <code class="prettyprint lang-java">T</code> (例如：<code class="prettyprint lang-java">RequestT</code>,
+  <code class="prettyprint lang-java">FooBarT</code>)。</li></ul><a name="acronyms"></a><a name="camelcase"></a><a name="s5.3-camel-case">
+    </a><h3><a name="s5.3-camel-case">5.3 Camel case: defined 驼峰式命名：&nbsp;</a><a href="#s5.3-camel-case"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>Sometimes there is more than one reasonable way to convert an English phrase into camel case,
+such as when acronyms or unusual constructs like "IPv6" or "iOS" are present. To improve
+predictability, Google Style specifies the following (nearly) deterministic scheme.</p>
+<p>有时，有超过一个合理的方式去转化一个英语短语到驼峰式，比如当出现首字母大写缩写或专用名词 "IPv6" 或 "iOS"时。为了提升预见性，Google风格制定了以下基本确定的格式。</p><p>Beginning with the prose form of the name: 从名称的正常格式开始：</p><ol><li>Convert the phrase to plain ASCII and remove any apostrophes. For example, "Müller's
+  algorithm" might become "Muellers algorithm".<br>
+转换短语成文本ASCII码，删除标注符号。例如："Müller's algorithm" 应变成 "Muellers algorithm"。</li><li>Divide this result into words, splitting on spaces and any remaining punctuation (typically
+  hyphens).<br>
+  按空格和剩余符号（代表性地如连接符）把上条结果分割成单词。
+
+  <ul><li><em>Recommended:</em> if any word already has a conventional camel-case appearance in common
+    usage, split this into its constituent parts (e.g., "AdWords" becomes "ad&nbsp;words"). Note
+    that a word such as "iOS" is not really in camel case <em>per se</em>; it defies <em>any</em>
+    convention, so this recommendation does not apply.<br>
+<em>推荐：</em>如果任何词已经是驼峰形式，把它变成原来的样子 (如, "AdWords" 变成 "ad&nbsp;words")。注意：像"iOS"这样的词不是真正的驼峰形式，它不属于任何规范，所以它不适用于这里推荐的做法。</li></ul></li><li>Now lowercase <em>everything</em> (including acronyms), then uppercase only the first
+  character of:<br>
+  现在小写<em>所有字符</em> (包括首字大写缩写)，然后将下面单词的第一个字符大写：
+  <ul><li>... each word, to yield <em>upper camel case</em>, or<br>
+    ... 每个单词，去符合<em>大驼峰式命名</em>，或</li>
+    <li>... each word except the first, to yield <em>lower camel case</em><br>
+    ... 除了第一个以外的单词，去符合<em>小驼峰式命名</em></li>
+  </ul>
+</li><li>Finally, join all the words into a single identifier.<br>
+最后，将所有单词合并成一个单一的标识。</li></ol><p>Note that the casing of the original words is almost entirely disregarded. Examples:</p>
+<p>注意：基本无视原始字符的大小写。例如：</p><table><tbody><tr><th>Prose form 正常格式</th><th>Correct 正确</th><th>Incorrect 错误</th></tr><tr><td>"XML HTTP request"</td><td><code class="prettyprint lang-java">XmlHttpRequest</code></td><td><code class="prettyprint lang-java badcode">XMLHTTPRequest</code></td></tr><tr><td>"new customer ID"</td><td><code class="prettyprint lang-java">newCustomerId</code></td><td><code class="prettyprint lang-java badcode">newCustomerID</code></td></tr><tr><td>"inner stopwatch"</td><td><code class="prettyprint lang-java">innerStopwatch</code></td><td><code class="prettyprint lang-java badcode">innerStopWatch</code></td></tr><tr><td>"supports IPv6 on iOS?"</td><td><code class="prettyprint lang-java">supportsIpv6OnIos</code></td><td><code class="prettyprint lang-java badcode">supportsIPv6OnIOS</code></td></tr><tr><td>"YouTube importer"</td><td><code class="prettyprint lang-java">YouTubeImporter</code><br><code class="prettyprint lang-java">YoutubeImporter</code>*</td><td></td></tr></tbody></table><p>*Acceptable, but not recommended. * 可接受，但不推荐。</p><p class="note"><b>Note:</b>&nbsp;Some words are ambiguously hyphenated in the English language: for example
+"nonempty" and "non-empty" are both correct, so the method names
+<code class="prettyprint lang-java">checkNonempty</code> and
+<code class="prettyprint lang-java">checkNonEmpty</code> are likewise both correct.</p>
+<p class="note"><b>注意：</b>在英语中，有些单词间的连接符是可有可无的。如：
+"nonempty" 和 "non-empty" 都是正确的，所以这些方法名
+<code class="prettyprint lang-java">checkNonempty</code> 和
+<code class="prettyprint lang-java">checkNonEmpty</code> 也都是正确的。</p><a name="s6-programming-practices">
+    </a><h2><a name="s6-programming-practices">6 Programming Practices 编程实践&nbsp;</a><a href="#s6-programming-practices"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h2>
+    <a name="s6.1-override-annotation">
+    </a><h3><a name="s6.1-override-annotation">6.1 @Override: always used 始终添加&nbsp;</a><a href="#s6.1-override-annotation"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>A method is marked with the <code class="prettyprint lang-java">@Override</code> annotation
+whenever it is legal.  This includes a class method overriding a superclass method, a class method
+implementing an interface method, and an interface method respecifying a superinterface
+method.</p>
+<p>只要符合<code class="prettyprint lang-java">@Override</code>注解规范就加上它。这包括一个类方法重写超类方法，一个类方法实现接口方法和接口重新定义父接口方法。 </p><a name="caughtexceptions"></a><a name="s6.2-caught-exceptions">
+    </a><h3><a name="s6.2-caught-exceptions">6.2 Caught exceptions: not ignored 捕获异常：不能忽略&nbsp;</a><a href="#s6.2-caught-exceptions"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>Except as noted below, it is very rarely correct to do nothing in response to a caught
+exception. (Typical responses are to log it, or if it is considered "impossible", rethrow it as an
+<code class="prettyprint lang-java">AssertionError</code>.)</p>
+<p>除了下面提及的，再捕获异常块中不做任何事是不对的。(代表性地是写日志说明，如果认为这种异常是不可能发生地，重新抛出
+<code class="prettyprint lang-java">AssertionError</code>。)</p><p>When it truly is appropriate to take no action whatsoever in a catch block, the reason this is
+justified is explained in a comment.</p>
+<p>当真地合理地在catch块中不用做任何动作，在注释中说明合适的理由。</p><pre class="prettyprint lang-java">try {
+  int i = Integer.parseInt(response);
+  return handleNumericResponse(i);
+} catch (NumberFormatException ok) {
+  // it's not numeric; that's fine, just continue
+  // 这不是一个数字，没关系，继续
+}
+return handleTextResponse(response);
+</pre>
+<p class="exception"><b>Exception:</b>&nbsp;in tests, a caught exception may be ignored without comment <em>if</em> it is
+named <code class="prettyprint lang-java">expected</code>. The following is a very common idiom
+for ensuring that the method under test <em>does</em> throw an exception of the expected type, so
+a comment is unnecessary here.</p><p class="exception"><b>特殊情况：</b>在测试中，<em>如果</em>捕获的异常被命名成<code class="prettyprint lang-java">expected</code>，就可以不写注释并且不做任何事。下面是一个很常见的语句，清楚表明测试里的方法会抛出一个期望的异常，所以注释在这里就不是必须的。</p><pre class="prettyprint lang-java">try {
+  emptyStack.pop();
+  fail();
+} catch (NoSuchElementException expected) {
+}
+</pre><a name="s6.3-static-members">
+    </a><h3><a name="s6.3-static-members">6.3 Static members: qualified using class 静态成员：保持使用类名&nbsp;</a><a href="#s6.3-static-members"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>When a reference to a static class member must be qualified, it is qualified with that class's
+name, not with a reference or expression of that class's type.</p>
+<p>当必须保留引用类的静态成员，就和类名一起保留，不要和那个类的引用变量或者表达式一起使用。</p><pre class="prettyprint lang-java">Foo aFoo = ...;
+Foo.aStaticMethod(); // good
+<span class="badcode">aFoo.aStaticMethod();</span> // bad
+<span class="badcode">somethingThatYieldsAFoo().aStaticMethod();</span> // very bad
+</pre><a name="finalizers"></a><a name="s6.4-finalizers">
+    </a><h3><a name="s6.4-finalizers">6.4 Finalizers: not used 不要使用&nbsp;</a><a href="#s6.4-finalizers"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>It is <strong>extremely rare</strong> to override <code class="prettyprint lang-java">Object.finalize</code>.</p>
+<p>重写<code class="prettyprint lang-java">Object.finalize</code>是<strong>非常罕见的</strong>。</p><p class="tip"><b>Tip:</b>&nbsp;Don't do it. If you absolutely must, first read and understand
+<a href="http://books.google.com/books?isbn=8131726592"><em>Effective Java</em></a>
+Item 7, "Avoid Finalizers," very carefully, and <em>then</em> don't do it.</p>
+<p class="tip"><b>提示：</b>不要这么做。如果你的的确确必须这么做，先非常仔细的阅读并理解
+<a href="http://books.google.com/books?isbn=8131726592"><em>Effective Java</em></a>
+Item 7, "避免 Finalizers,"，<em>然后</em>不这么做。</p><a name="javadoc"></a><a name="s7-javadoc">
+    </a><h2><a name="s7-javadoc">7 Javadoc&nbsp;</a><a href="#s7-javadoc"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h2>
+    <a name="s7.1-javadoc-formatting">
+    </a><h3><a name="s7.1-javadoc-formatting">7.1 Formatting 格式&nbsp;</a><a href="#s7.1-javadoc-formatting"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <a name="s7.1.1-javadoc-multi-line">
+    </a><h4><a name="s7.1.1-javadoc-multi-line">7.1.1 General form 通用格式&nbsp;</a><a href="#s7.1.1-javadoc-multi-line"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>The <em>basic</em> formatting of Javadoc blocks is as seen in this example:</p>
+<p>Javadoc块的<em>基本</em>格式看起来像下面的例子：</p><pre class="prettyprint lang-java">/**
+ * Multiple lines of Javadoc text are written here,
+ * wrapped normally...
+ */
+public int method(String p1) { ... }
+</pre><p>... or in this single-line example:</p>
+<p>... 或者单行格式例子：</p><pre class="prettyprint lang-java">/** An especially short bit of Javadoc. */
+</pre><p>The basic form is always acceptable. The single-line form may be substituted when there are no
+at-clauses present, and the entirety of the Javadoc block (including comment markers) can fit on a
+single line.</p>
+<p>基本格式任何地方都可以用。单行格式可以在没有@子句出现，且整个Javadoc块(包括*号)可以被填入一行时用。</p><a name="s7.1.2-javadoc-paragraphs">
+    </a><h4><a name="s7.1.2-javadoc-paragraphs">7.1.2 Paragraphs 段落&nbsp;</a><a href="#s7.1.2-javadoc-paragraphs"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    
+<p>One blank line—that is, a line containing only the aligned leading asterisk
+(<code>*</code>)—appears between paragraphs, and before the group of "at-clauses" if
+present. Each paragraph but the first has <code>&lt;p&gt;</code> immediately before the first word,
+with no space after.</p><p>一行空行—就是这行只有开始对齐的星号(<code>*</code>)—出现在段落之间，且在@子句之前，除了第一个以外的每个段落的第一个单词前要有<code>&lt;p&gt;</code>，且后面没有空格。</p><a name="s7.1.3-javadoc-at-clauses">
+    </a><h4><a name="s7.1.3-javadoc-at-clauses">7.1.3 At-clauses @子句&nbsp;</a><a href="#s7.1.3-javadoc-at-clauses"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Any of the standard "at-clauses" that are used appear in the order <code>@param</code>,
+<code>@return</code>, <code>@throws</code>, <code>@deprecated</code>, and these four types never
+appear with an empty description. When an at-clause doesn't fit on a single line, continuation lines
+are indented four (or more) spaces from the position of the <code>@</code>.
+</p>
+<p>任何标准的"@子句"按这种顺序出现：<code>@param</code>,
+<code>@return</code>, <code>@throws</code>, <code>@deprecated</code>，且这4个子句禁止出现不带说明的情况。当一个@子句不能填入一行时，后续行以<code>@</code>为标准锁进4个(或更多)空格。</p><a name="s7.2-summary-fragment">
+    </a><h3><a name="s7.2-summary-fragment">7.2 The summary fragment 摘要片段&nbsp;</a><a href="#s7.2-summary-fragment"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>The Javadoc for each class and member begins with a brief <strong>summary fragment</strong>. This
+fragment is very important: it is the only part of the text that appears in certain contexts such as
+class and method indexes.</p>
+<p>这种Javadoc可以用来给每个类和成员加上一个简单的<strong>摘要片段</strong>。这种片段很重要：它是唯一的文字出现在上下文某处如类和方法的索引。</p><p>This is a fragment—a noun phrase or verb phrase, not a complete sentence. It does
+<strong>not</strong> begin with <code class="badcode">A {@code Foo} is a...</code>, or
+<code class="badcode">This method returns...</code>, nor does it form a complete imperative sentence
+like <code class="badcode">Save the record.</code>. However, the fragment is capitalized and
+punctuated as if it were a complete sentence.</p>
+<p>这是一个片段——一个名字短语或者动词短语，不是一个完整的句子。它<strong>不</strong>以<code class="badcode">A {@code Foo} is a...</code> 或
+<code class="badcode">This method returns...</code>开头，也不是完整的句子，像
+<code class="badcode">Save the record.</code>。然而，片段是要大写和加标点的，就好像一个完整的句子。</p><p class="tip"><b>Tip:</b>&nbsp;A common mistake is to write simple Javadoc in the form
+<code class="prettyprint lang-java badcode">/** @return the customer ID */</code>. This is
+incorrect, and should be changed to
+<code class="prettyprint lang-java">/** Returns the customer ID. */</code>.</p>
+<p class="tip"><b>提示：</b>一种常见的错误是写这种格式的Javadoc
+<code class="prettyprint lang-java badcode">/** @return the customer ID */</code>。这是错误的，应改成
+<code class="prettyprint lang-java">/** Returns the customer ID. */</code>。</p><a name="s7.3-javadoc-where-required">
+    </a><h3><a name="s7.3-javadoc-where-required">7.3 Where Javadoc is used 哪里使用Javadoc&nbsp;</a><a href="#s7.3-javadoc-where-required"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h3>
+    <p>At the <em>minimum</em>, Javadoc is present for every
+<code class="prettyprint lang-java">public</code> class, and every
+<code class="prettyprint lang-java">public</code> or
+<code class="prettyprint lang-java">protected</code> member of such a class, with a few exceptions
+noted below.</p>
+<p>除了下面提高的一些情况，至<em>少</em>，Javadoc要出现在每个
+<code class="prettyprint lang-java">public</code> 类和每个
+<code class="prettyprint lang-java">public</code> 或
+<code class="prettyprint lang-java">protected</code> 类成员。</p><a name="s7.3.1-javadoc-exception-self-explanatory">
+    </a><h4><a name="s7.3.1-javadoc-exception-self-explanatory">7.3.1 Exception: self-explanatory methods 例外：可以自我解释的方法&nbsp;</a><a href="#s7.3.1-javadoc-exception-self-explanatory"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Javadoc is optional for "simple, obvious" methods like
+<code class="prettyprint lang-java">getFoo</code>, in cases where there <em>really and truly</em> is
+nothing else worthwhile to say but "Returns the foo".</p>
+<p>“简单，清晰”的方法如
+<code class="prettyprint lang-java">getFoo</code>，Javadoc是可选的，这个例子是<em>真真切切</em>除了"返回foo"外没有任何意思了。</p>
+<p>The test methods of a unit test class are perhaps the most common example of this exemption.
+These methods can <em>usually</em> be named descriptively enough that no additional documentation is
+needed.</p><p>单元测试类的测试方法可能是最常见的例外。这些方法<em>通常</em>被命名成有足够的说明性，不需要额外的文档。</p>
+<p class="tip"><b>Tip:</b>&nbsp;<strong>Important:</strong> it is not appropriate to cite this exception to justify
+omitting relevant information that a typical reader might need to know. For example, for a method
+named <code class="prettyprint lang-java">getCanonicalName</code>, don't omit its documentation
+(with the rationale that it would say only <code class="prettyprint lang-java badcode">/** Returns
+the canonical name. */</code>) if a typical reader may have no idea what the term "canonical name"
+means!</p><p class="tip"><b>提示：</b><strong>重要：</strong>不应利用这种例外去省略读者需要知道的相关信息。例如，方法名
+<code class="prettyprint lang-java">getCanonicalName</code>，如果读者可能不知道术语"canonical name"的意思，就不应省略它的文档
+(名字仅说明了<code class="prettyprint lang-java badcode">/** 返回canonical name. */</code>)！</p><a name="s7.3.2-javadoc-exception-overrides">
+    </a><h4><a name="s7.3.2-javadoc-exception-overrides">7.3.2 Exception: overrides 例外：重写&nbsp;</a><a href="#s7.3.2-javadoc-exception-overrides"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Javadoc is not always present on a method that overrides a supertype method.</p>
+<p>Javadoc不总是出现在一个重写超类方法的方法上。</p><a name="s7.3.3-javadoc-optional">
+    </a><h4><a name="s7.3.3-javadoc-optional">7.3.3 Optional javadoc 可选的Javadoc&nbsp;</a><a href="#s7.3.3-javadoc-optional"><img height="21" width="21" src="./statics/javaguidelink.png" style="height: 21px; width: 21px;"></a></h4>
+    <p>Classes and members that are not visible outside their package still have Javadoc <em>as
+needed</em>. Whenever an implementation comment would be used to define the overall purpose or
+behavior of a class, method or field, that comment is written as Javadoc instead. (It's more
+uniform, and more tool-friendly.)</p>
+<p>不被包外可见的类和成员已经有<em>必须的</em>Javadoc。无论何时一个代码注释被用来说明类、方法或字段的全部目的或行为，注释就应该被写成Javadoc。(这更统一，对工具更友好。)</p></div></div>  <hr>
+  <div class="change">Last changed: February 03, 2014</div>
+
+
+
+</body></html>
